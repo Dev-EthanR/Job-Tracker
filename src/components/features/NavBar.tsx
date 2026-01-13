@@ -33,7 +33,7 @@ const NavBar = ({ title }: Props) => {
       </header>
     );
   return (
-    <div className="bg-primary w-40 h-screen sticky top-0 p-2">
+    <div className="bg-primary w-40 h-screen sticky top-0 p-2 z-10">
       {navigations()}
     </div>
   );
