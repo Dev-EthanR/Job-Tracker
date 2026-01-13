@@ -5,7 +5,7 @@
 
 @theme {
   --font-inter: "Inter", sans-serif;
-  --color-primary: #fdfdfd;
+  --color-primary: #f2f2f2;
   --color-secondary: #f1f1f7;
   --color-accent: #3d7dd7;
   --color-text: #31394e;
@@ -18,9 +18,11 @@
   --color-error: #d36f6f;
 }
 
-.dark {
-  --color-primary: #273246;
-  --color-secondary: #293655;
-  --color-text: #c4cede;
-  --color-subtext: #b4b7bd;
+@layer theme {
+  .dark {
+    --color-primary: #273246;
+    --color-secondary: #293655;
+    --color-text: #c4cede;
+    --color-subtext: #b4b7bd;
+  }
 }
