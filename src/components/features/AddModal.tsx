@@ -27,6 +27,7 @@ const AddModal = () => {
     register,
     reset,
     handleSubmit,
+    clearErrors,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(schema),
@@ -36,11 +37,18 @@ const AddModal = () => {
   usePreventScroll(modalOpen);
 
   if (!modalOpen) return null;
+
   const onSubmit = (data: FormDataShape) => {
     setData((prevData) => [...prevData, data]);
     reset();
     setModalOpen(false);
   };
+
+  function exitModal(): void {
+    setModalOpen(false);
+    clearErrors();
+    reset();
+  }
 
   const inputForm: FormFields[] = [
     { name: "Company", key: "company", type: "text", error: errors.company },
@@ -56,7 +64,7 @@ const AddModal = () => {
       >
         <div className="flex justify-between border-b border-gray-300 pb-2 mb-2">
           <h2 className="text-2xl font-semibold">Add Application</h2>
-          <button aria-label="close" onClick={() => setModalOpen(false)}>
+          <button aria-label="close" onClick={exitModal}>
             <img className="w-5" src={close} alt="" />
           </button>
         </div>
@@ -81,6 +89,7 @@ const AddModal = () => {
               />
             </div>
           ))}
+
           <label htmlFor="notes">Notes:</label>
           <textarea
             id="notes"
@@ -91,7 +100,7 @@ const AddModal = () => {
         <div className="flex gap-3 border-t border-gray-300 pt-3 mt-3">
           <button
             className="border-gray-300 border p-1 w-full"
-            onClick={() => setModalOpen(false)}
+            onClick={exitModal}
           >
             Cancel
           </button>
