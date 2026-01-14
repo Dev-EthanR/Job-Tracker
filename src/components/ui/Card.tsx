@@ -1,4 +1,5 @@
 import useIsMobile from "../../hooks/useIsMobile";
+import dropdown from "../../assets/icons/dropdown.svg";
 
 type Status = {
   name: "Rejected" | "Applied" | "Interview" | "Offer";
@@ -26,7 +27,13 @@ const Card = ({ company, title, date, status }: Props) => {
             {title}
           </h4>
         </div>
-        <button>...</button>
+        <button aria-label="further card options">
+          <img
+            className="w-7 hover:translate-y-1 transition-transform duration-300 cursor-pointer ease-out"
+            src={dropdown}
+            alt=""
+          />
+        </button>
       </div>
       <div className="flex items-center justify-between md:justify-start">
         <span
