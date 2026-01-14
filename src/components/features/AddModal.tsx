@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { useForm, type FieldError } from "react-hook-form";
 import { z } from "zod";
 import close from "../../assets/icons/menu-close.svg";
 import useAddModal from "../../hooks/useAddModal";
@@ -15,6 +15,13 @@ const schema = z.object({
 
 type FormDataShape = z.infer<typeof schema>;
 
+interface FormFields {
+  name: string;
+  key: keyof FormDataShape;
+  type: string;
+  error?: FieldError;
+}
+
 const AddModal = () => {
   const {
     register,
@@ -25,15 +32,21 @@ const AddModal = () => {
     resolver: zodResolver(schema),
   });
   const { modalOpen, setModalOpen } = useAddModal();
-  usePreventScroll(modalOpen);
   const { setData } = useData();
+  usePreventScroll(modalOpen);
 
   if (!modalOpen) return null;
   const onSubmit = (data: FormDataShape) => {
-    reset();
     setData((prevData) => [...prevData, data]);
+    reset();
     setModalOpen(false);
   };
+
+  const inputForm: FormFields[] = [
+    { name: "Company", key: "company", type: "text", error: errors.company },
+    { name: "Position", key: "position", type: "text", error: errors.position },
+    { name: "Date", key: "date", type: "date", error: errors.date },
+  ];
 
   return (
     <>
@@ -48,53 +61,26 @@ const AddModal = () => {
           </button>
         </div>
         <div>
-          <label className="flex justify-between" htmlFor="company">
-            <span>
-              Company: <span className="text-red-400">*</span>
-            </span>
-            {errors.company && (
-              <span className="text-red-400">{errors.company.message}</span>
-            )}
-          </label>
-          <input
-            className="border-gray-300 border rounded-md mt-1 mb-3 h-8 w-full p-4 focus:outline-gray-400"
-            id="company"
-            type="text"
-            {...register("company")}
-            aria-required
-            autoComplete="off"
-          />
-          <label className="flex justify-between" htmlFor="position">
-            <span>
-              Positon: <span className="text-red-400">*</span>
-            </span>
-            {errors.position && (
-              <span className="text-red-400">{errors.position.message}</span>
-            )}
-          </label>
-          <input
-            className="border-gray-300 border rounded-md mt-1 mb-3 h-8 w-full p-4 focus:outline-gray-400"
-            id="position"
-            {...register("position")}
-            type="text"
-            aria-required
-            autoComplete="off"
-          />
-          <label className="flex justify-between" htmlFor="date">
-            <span>
-              Applied Date: <span className="text-red-400">*</span>
-            </span>
-            {errors.date && (
-              <span className="text-red-400">{errors.date.message}</span>
-            )}
-          </label>
-          <input
-            className="border-gray-300 border rounded-md mt-1 mb-3 h-8 w-full p-4 focus:outline-gray-400"
-            id="date"
-            {...register("date")}
-            type="date"
-            aria-required
-          />
+          {inputForm.map((input) => (
+            <div key={input.key}>
+              <label className="flex justify-between" htmlFor={input.key}>
+                <span>
+                  {input.name}: <span className="text-red-400">*</span>
+                </span>
+                {input.error && (
+                  <span className="text-red-400">{input.error.message}</span>
+                )}
+              </label>
+              <input
+                className="border-gray-300 border rounded-md mt-1 mb-3 h-8 w-full p-4 focus:outline-gray-400"
+                id={input.key}
+                type={input.type}
+                {...register(input.key)}
+                aria-required
+                autoComplete="off"
+              />
+            </div>
+          ))}
           <label htmlFor="notes">Notes:</label>
           <textarea
             id="notes"
