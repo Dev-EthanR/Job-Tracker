@@ -22,7 +22,7 @@ const NavBar = ({ title }: Props) => {
 
   if (isMobile)
     return (
-      <header className="bg-primary">
+      <header className="bg-primary w-full">
         <div className="flex justify-between p-2 items-center ">
           <h1 className="text-2xl font-bold">{title}</h1>
           <button onClick={() => setOpen((prev) => !prev)}>
