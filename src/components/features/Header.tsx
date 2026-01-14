@@ -37,9 +37,9 @@ const Header = () => {
         <button
           className={` ${
             isMobile
-              ? "absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full"
+              ? "bottom-5 left-1/2 -translate-x-1/2 rounded-full fixed"
               : "rounded-lg"
-          } flex items-center justify-center w-60 py-3 text-xl font-medium bg-accent text-white hover:brightness-115 cursor-pointer fixed`}
+          } flex items-center justify-center w-60 py-3 text-xl font-medium bg-accent text-white hover:brightness-115 cursor-pointer `}
           onClick={() => setModalOpen(true)}
         >
           <img className="w-8 filter brightness-0 invert" src={plus} alt="" />

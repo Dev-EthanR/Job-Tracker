@@ -6,6 +6,7 @@ import useAddModal from "../../hooks/useAddModal";
 import useData from "../../hooks/useData";
 import usePreventScroll from "../../hooks/usePreventScroll";
 
+// form validations
 const schema = z.object({
   company: z.string().max(30).min(1, "Company is required"),
   position: z.string().max(30).min(1, "Position is required"),
@@ -36,12 +37,12 @@ const AddModal = () => {
   const { setData } = useData();
   usePreventScroll(modalOpen);
 
+  // display nothing if add button isnt pressed
   if (!modalOpen) return null;
 
   const onSubmit = (data: FormDataShape) => {
     setData((prevData) => [...prevData, data]);
-    reset();
-    setModalOpen(false);
+    exitModal();
   };
 
   function exitModal(): void {
@@ -50,6 +51,7 @@ const AddModal = () => {
     reset();
   }
 
+  //   form Elements
   const inputForm: FormFields[] = [
     { name: "Company", key: "company", type: "text", error: errors.company },
     { name: "Position", key: "position", type: "text", error: errors.position },
