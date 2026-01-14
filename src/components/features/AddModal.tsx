@@ -5,6 +5,7 @@ import close from "../../assets/icons/menu-close.svg";
 import useAddModal from "../../hooks/useAddModal";
 import useData from "../../hooks/useData";
 import usePreventScroll from "../../hooks/usePreventScroll";
+import { da } from "zod/locales";
 
 // form validations
 const schema = z.object({
@@ -34,14 +35,14 @@ const AddModal = () => {
     resolver: zodResolver(schema),
   });
   const { modalOpen, setModalOpen } = useAddModal();
-  const { setData } = useData();
+  const { setData, data } = useData();
   usePreventScroll(modalOpen);
 
   // display nothing if add button isnt pressed
   if (!modalOpen) return null;
 
-  const onSubmit = (data: FormDataShape) => {
-    setData((prevData) => [...prevData, data]);
+  const onSubmit = (fData: FormDataShape) => {
+    setData((prevData) => [...prevData, fData]);
     exitModal();
   };
 

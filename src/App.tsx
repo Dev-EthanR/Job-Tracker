@@ -26,7 +26,11 @@ export const DataCtx = createContext<DataType | null>(null);
 function App() {
   const isMobile: boolean = useIsMobile();
   const date: Date = new Date();
-  const [data, setData] = useState<Data[]>([]);
+  const [data, setData] = useState<Data[]>(() => {
+    const storedData: string | null = localStorage.getItem("jobData");
+    return storedData ? JSON.parse(storedData) : [];
+  });
+  localStorage.setItem("jobData", JSON.stringify(data));
 
   return (
     <DataCtx.Provider value={{ data, setData }}>
@@ -38,27 +42,29 @@ function App() {
         <NavBar title="My Applications" />
         <main className="grow">
           <Header />
-          <Card
-            company="Google"
-            title="IT"
-            date={date}
-            status={{ name: "Rejected", color: "bg-reject" }}
-          />
-          <Card
-            company="Microsoft"
-            title="Accountant"
-            date={date}
-            status={{ name: "Offer", color: "bg-interview" }}
-          />
-          {data.map((d) => (
+          <div className="flex flex-col items-center md:items-start px-4 gap-3">
             <Card
-              key={d.company}
-              company={d.company}
-              title={d.position}
+              company="Google"
+              title="IT"
+              date={date}
+              status={{ name: "Rejected", color: "bg-reject" }}
+            />
+            <Card
+              company="Microsoft"
+              title="Accountant"
               date={date}
               status={{ name: "Offer", color: "bg-interview" }}
             />
-          ))}
+            {data.map((d) => (
+              <Card
+                key={d.company}
+                company={d.company}
+                title={d.position}
+                date={date}
+                status={{ name: "Offer", color: "bg-interview" }}
+              />
+            ))}
+          </div>
         </main>
       </div>
     </DataCtx.Provider>
