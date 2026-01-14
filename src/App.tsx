@@ -7,7 +7,6 @@ import {
 import Header from "./components/features/Header";
 import NavBar from "./components/features/NavBar";
 import Card from "./components/ui/Card";
-import useIsMobile from "./hooks/useIsMobile";
 
 interface Data {
   company: string;
@@ -24,7 +23,6 @@ interface DataType {
 export const DataCtx = createContext<DataType | null>(null);
 
 function App() {
-  const isMobile: boolean = useIsMobile();
   const date: Date = new Date();
   const [data, setData] = useState<Data[]>(() => {
     const storedData: string | null = localStorage.getItem("jobData");
@@ -35,9 +33,8 @@ function App() {
   return (
     <DataCtx.Provider value={{ data, setData }}>
       <div
-        className={`font-inter h-dvh w-full flex ${
-          isMobile && " flex-col items-center"
-        } `}
+        className="font-inter h-dvh w-full flex
+          flex-col items-center md:flex-row md:items-start"
       >
         <NavBar title="My Applications" />
         <main className="grow">

@@ -1,4 +1,3 @@
-import useIsMobile from "../../hooks/useIsMobile";
 import dropdown from "../../assets/icons/dropdown.svg";
 
 type Status = {
@@ -14,8 +13,6 @@ interface Props {
 }
 
 const Card = ({ company, title, date, status }: Props) => {
-  const isMobile: boolean = useIsMobile();
-
   return (
     <div className="rounded-lg shadow-md shadow-gray-300 p-4 h-fit max-w-86">
       <div className="flex justify-between items-start w-60 mb-2 md:w-80">
@@ -39,9 +36,9 @@ const Card = ({ company, title, date, status }: Props) => {
         <span
           className={`${status.color} px-2.5 py-0.5 text-sm font-semibold md:bg-transparent flex items-center gap-2 md:order-1`}
         >
-          {!isMobile && (
-            <div className={`h-2.5 w-2.5 ${status.color} rounded-full`}></div>
-          )}
+          <div
+            className={`h-2.5 w-2.5 ${status.color} rounded-full hidden md:block`}
+          ></div>
           {status.name}
         </span>
         <span className="font-medium">

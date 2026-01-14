@@ -5,7 +5,6 @@ import {
   type Dispatch,
 } from "react";
 import plus from "../../assets/icons/plus.svg";
-import useIsMobile from "../../hooks/useIsMobile";
 import AddModal from "./AddModal";
 
 interface modalContext {
@@ -16,7 +15,6 @@ interface modalContext {
 export const AddModalCtx = createContext<modalContext | null>(null);
 
 const Header = () => {
-  const isMobile: boolean = useIsMobile();
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   return (
@@ -35,11 +33,7 @@ const Header = () => {
           </select>
         </div>
         <button
-          className={` ${
-            isMobile
-              ? "bottom-5 left-1/2 -translate-x-1/2 rounded-full fixed"
-              : "rounded-lg"
-          } flex items-center justify-center w-60 py-3 text-xl font-medium bg-accent text-white hover:brightness-115 cursor-pointer `}
+          className="bottom-5 left-1/2 -translate-x-1/2 rounded-full fixed md:static md:translate-x-0 md:rounded-lg flex items-center justify-center w-60 py-3 text-xl font-medium bg-accent text-white hover:brightness-115 cursor-pointer"
           onClick={() => setModalOpen(true)}
         >
           <img className="w-8 filter brightness-0 invert" src={plus} alt="" />
