@@ -17,7 +17,7 @@ const Card = ({ company, title, date, status }: Props) => {
   const isMobile: boolean = useIsMobile();
 
   return (
-    <div className="rounded-sm shadow-md p-4 h-fit">
+    <div className="rounded-sm shadow-md shadow-gray-300 p-4 h-fit">
       <div className="flex justify-between items-start w-60 mb-2 md:w-80">
         <div className="flex gap-1 flex-col md:flex-row md:items-center md:gap-4">
           <h3 className="tracking-tight text-accent text-xl font-bold md:text-2xl">
