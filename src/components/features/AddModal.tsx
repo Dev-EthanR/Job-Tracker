@@ -4,6 +4,7 @@ import { z } from "zod";
 import close from "../../assets/icons/menu-close.svg";
 import useAddModal from "../../hooks/useAddModal";
 import useData from "../../hooks/useData";
+import usePreventScroll from "../../hooks/usePreventScroll";
 
 const schema = z.object({
   company: z.string().max(30).min(1, "Company is required"),
@@ -24,10 +25,10 @@ const AddModal = () => {
     resolver: zodResolver(schema),
   });
   const { modalOpen, setModalOpen } = useAddModal();
+  usePreventScroll(modalOpen);
   const { setData } = useData();
 
   if (!modalOpen) return null;
-
   const onSubmit = (data: FormDataShape) => {
     reset();
     setData((prevData) => [...prevData, data]);
