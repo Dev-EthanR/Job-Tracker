@@ -7,6 +7,7 @@ import {
 import Header from "./components/features/Header";
 import NavBar from "./components/features/NavBar";
 import Card from "./components/ui/Card";
+import notFoundImage from "./assets/images/not-found.png";
 
 interface Data {
   id: string;
@@ -31,7 +32,6 @@ function App() {
   });
   localStorage.setItem("jobData", JSON.stringify(data));
 
-  console.log(data);
   return (
     <DataCtx.Provider value={{ data, setData }}>
       <div
@@ -39,21 +39,24 @@ function App() {
           flex-col items-center md:flex-row md:items-start"
       >
         <NavBar title="My Applications" />
-        <main className="grow">
+        <main className="grow ">
           <Header />
-          <div className="flex flex-col items-center md:items-start px-4 gap-3">
-            <Card
-              company="Google"
-              title="IT"
-              date={date}
-              status={{ name: "Rejected", color: "bg-reject" }}
-            />
-            <Card
-              company="Microsoft"
-              title="Accountant"
-              date={date}
-              status={{ name: "Offer", color: "bg-interview" }}
-            />
+          {data.length <= 0 && (
+            <div className="flex flex-col items-center w-full text-center justify-center mt-20 ">
+              <img
+                className="w-50 md:w-80"
+                src={notFoundImage}
+                alt="No applications found"
+              />
+              <h1 className="font-bold text-2xl mb-2 md:text-4xl">
+                No applications yet
+              </h1>
+              <p className="text-gray-600 w-60 md:w-full md:text-lg">
+                Get started by adding your first job application
+              </p>
+            </div>
+          )}
+          <div className="flex flex-col items-center md:items-start px-4 gap-3 ">
             {data.map((d) => (
               <Card
                 key={d.id}
