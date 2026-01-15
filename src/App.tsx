@@ -9,6 +9,7 @@ import NavBar from "./components/features/NavBar";
 import Card from "./components/ui/Card";
 
 interface Data {
+  id: string;
   company: string;
   position: string;
   date: string;
@@ -30,6 +31,7 @@ function App() {
   });
   localStorage.setItem("jobData", JSON.stringify(data));
 
+  console.log(data);
   return (
     <DataCtx.Provider value={{ data, setData }}>
       <div
@@ -54,7 +56,7 @@ function App() {
             />
             {data.map((d) => (
               <Card
-                key={d.company}
+                key={d.id}
                 company={d.company}
                 title={d.position}
                 date={date}
