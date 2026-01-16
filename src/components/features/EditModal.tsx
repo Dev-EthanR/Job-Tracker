@@ -6,6 +6,7 @@ import close from "../../assets/icons/menu-close.svg";
 import useData from "../../hooks/useData";
 import usePreventScroll from "../../hooks/usePreventScroll";
 import Input from "../input";
+import useEscapeKey from "../../hooks/useEscapeKey";
 // form validations
 const schema = z.object({
   company: z.string().max(30).trim().min(1, "Company cannot be empty"),
@@ -44,6 +45,7 @@ const EditModal = ({ cardId, open, setOpen }: Props) => {
 
   const cardtoEdit = data.find((d) => d.id === cardId);
   usePreventScroll(open);
+  useEscapeKey(() => exitModal());
   // display nothing if add button isnt pressed
   if (!open) return null;
 

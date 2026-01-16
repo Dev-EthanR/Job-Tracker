@@ -2,6 +2,7 @@ import { FocusTrap } from "focus-trap-react";
 import { useEffect, useRef } from "react";
 import useData from "../../hooks/useData";
 import usePreventScroll from "../../hooks/usePreventScroll";
+import useEscapeKey from "../../hooks/useEscapeKey";
 
 interface Props {
   cardId: string;
@@ -17,6 +18,7 @@ const DeleteModal = ({ cardId, open, setOpen }: Props) => {
     }
   }, [open]);
   usePreventScroll(open);
+  useEscapeKey(() => exitModal());
 
   // display nothing if delete button isnt pressed
   if (!open) return null;

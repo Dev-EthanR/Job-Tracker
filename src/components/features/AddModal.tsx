@@ -8,6 +8,7 @@ import useData from "../../hooks/useData";
 import usePreventScroll from "../../hooks/usePreventScroll";
 import { v4 as uuidv4 } from "uuid";
 import Input from "../input";
+import useEscapeKey from "../../hooks/useEscapeKey";
 
 // form validations
 const schema = z.object({
@@ -42,6 +43,7 @@ const AddModal = () => {
   const { modalOpen, setModalOpen } = useAddModal();
   const { setData } = useData();
   usePreventScroll(modalOpen);
+  useEscapeKey(() => exitModal());
 
   // display nothing if add button isnt pressed
   if (!modalOpen) return null;
