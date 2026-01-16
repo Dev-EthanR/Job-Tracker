@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 import dropdown from "../../assets/icons/dropdown.svg";
 import DeleteModal from "../features/DeleteModal";
 import EditModal from "../features/EditModal";
@@ -20,6 +20,11 @@ const Card = ({ id, company, title, date, status }: Props) => {
   const [optionsOpened, setOpionsOpened] = useState<boolean>(false);
   const [editModalOpen, setEditModalOpen] = useState<boolean>(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
+
+  function modalOption(setModal: Dispatch<SetStateAction<boolean>>): void {
+    setOpionsOpened(false);
+    setModal(true);
+  }
 
   return (
     <div className="rounded-lg shadow-md shadow-gray-300 p-4 h-fit max-w-86">
@@ -46,13 +51,13 @@ const Card = ({ id, company, title, date, status }: Props) => {
           <div className="absolute top-6 right-0 flex flex-col items-start bg-white border-gray-200 rounded-md shadow-sm border w-20 px-2 py-1 text-sm gap-1">
             <button
               className="hover:bg-gray-200 w-full rounded-sm text-left cursor-pointer"
-              onClick={() => setEditModalOpen(true)}
+              onClick={() => modalOption(setEditModalOpen)}
             >
               Edit
             </button>
             <button
               className="hover:bg-gray-200 w-full rounded-sm text-left cursor-pointer"
-              onClick={() => setDeleteModalOpen(true)}
+              onClick={() => modalOption(setDeleteModalOpen)}
             >
               Delete
             </button>
