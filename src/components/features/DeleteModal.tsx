@@ -47,9 +47,9 @@ const DeleteModal = ({ cardId, open, setOpen }: Props) => {
               Cancel
             </button>
             <button
+              ref={buttonRef}
               className="bg-red-600 text-white border-gray-300 w-30 rounded-lg border p-1  cursor-pointer"
               onClick={deleteApplication}
-              ref={buttonRef}
             >
               Delete
             </button>
