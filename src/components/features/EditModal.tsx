@@ -24,7 +24,12 @@ interface FormFields {
   error?: FieldError;
 }
 
-const AddModal = () => {
+interface Props {
+  cardId: string;
+  open: boolean;
+  setOpen: (toggle: boolean) => void;
+}
+const EditModal = ({ cardId, open, setOpen }: Props) => {
   const {
     register,
     reset,
@@ -34,20 +39,19 @@ const AddModal = () => {
   } = useForm({
     resolver: zodResolver(schema),
   });
-  const { modalOpen, setModalOpen } = useAddModal();
   const { setData } = useData();
-  usePreventScroll(modalOpen);
+  usePreventScroll(open);
 
   // display nothing if add button isnt pressed
-  if (!modalOpen) return null;
+  if (!open) return null;
 
   const onSubmit = (fData: FormDataShape) => {
-    setData((prevData) => [{ id: uuidv4(), ...fData }, ...prevData]);
+    setData((prevData) => [...prevData, { id: uuidv4(), ...fData }]);
     exitModal();
   };
 
   function exitModal(): void {
-    setModalOpen(false);
+    setOpen(false);
     clearErrors();
     reset();
   }
@@ -66,12 +70,8 @@ const AddModal = () => {
         className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 flex flex-col bg-white p-5 rounded-lg shadow-2xl w-80 md:w-140"
       >
         <div className="flex justify-between border-b border-gray-300 pb-2 mb-2">
-          <h2 className="text-2xl font-semibold">Add Application</h2>
-          <button
-            aria-label="close"
-            onClick={exitModal}
-            className="cursor-pointer"
-          >
+          <h2 className="text-2xl font-semibold">Edit Application</h2>
+          <button aria-label="close" onClick={exitModal}>
             <img className="w-5" src={close} alt="" />
           </button>
         </div>
@@ -106,13 +106,13 @@ const AddModal = () => {
         </div>
         <div className="flex gap-3 border-t border-gray-300 pt-3 mt-3">
           <button
-            className="border-gray-300 border p-1 w-full cursor-pointer"
+            className="border-gray-300 border p-1 w-full"
             onClick={exitModal}
           >
             Cancel
           </button>
           <button
-            className="bg-accent text-white border-gray-300 border p-1 w-full cursor-pointer"
+            className="bg-accent text-white border-gray-300 border p-1 w-full"
             type="submit"
           >
             Apply
@@ -124,4 +124,4 @@ const AddModal = () => {
   );
 };
 
-export default AddModal;
+export default EditModal;

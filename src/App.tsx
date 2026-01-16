@@ -60,6 +60,7 @@ function App() {
             {data.map((d) => (
               <Card
                 key={d.id}
+                id={d.id}
                 company={d.company}
                 title={d.position}
                 date={date}
