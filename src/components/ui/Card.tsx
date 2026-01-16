@@ -24,11 +24,11 @@ const Card = ({ id, company, title, date, status }: Props) => {
   return (
     <div className="rounded-lg shadow-md shadow-gray-300 p-4 h-fit max-w-86">
       <div className="flex justify-between items-start w-60 mb-2 md:w-80 relative">
-        <div className="flex gap-1 flex-col md:flex-row md:items-center md:gap-4">
+        <div className="flex gap-1 flex-col md:flex-row md:items-center md:gap-x-5 flex-wrap">
           <h3 className="tracking-tight text-accent text-xl font-bold md:text-2xl">
             {company}
           </h3>
-          <h4 className="tracking-tight text-sm md:text-base font-medium">
+          <h4 className="tracking-tight text-sm md:text-base font-medium ">
             {title}
           </h4>
         </div>
