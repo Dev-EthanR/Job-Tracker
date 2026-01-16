@@ -35,6 +35,7 @@ const EditModal = ({ cardId, open, setOpen }: Props) => {
     reset,
     handleSubmit,
     clearErrors,
+    setFocus,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(schema),
@@ -106,6 +107,7 @@ const EditModal = ({ cardId, open, setOpen }: Props) => {
               key={input.key}
               input={input}
               register={register}
+              setFocus={setFocus}
               formType="edit"
             />
           ))}

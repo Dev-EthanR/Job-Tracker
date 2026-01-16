@@ -7,6 +7,7 @@ import useData from "../../hooks/useData";
 import usePreventScroll from "../../hooks/usePreventScroll";
 import { v4 as uuidv4 } from "uuid";
 import Input from "../input";
+import { useEffect } from "react";
 
 // form validations
 const schema = z.object({
@@ -31,6 +32,7 @@ const AddModal = () => {
     reset,
     handleSubmit,
     clearErrors,
+    setFocus,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(schema),
@@ -65,6 +67,11 @@ const AddModal = () => {
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 flex flex-col bg-white p-5 rounded-lg shadow-2xl w-80 md:w-140"
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            e.stopPropagation();
+          }
+        }}
       >
         <div className="flex justify-between border-b border-gray-300 pb-2 mb-2">
           <h2 className="text-2xl font-semibold">Add Application</h2>
@@ -72,6 +79,7 @@ const AddModal = () => {
             aria-label="close"
             onClick={exitModal}
             className="cursor-pointer"
+            type="button"
           >
             <img className="w-5" src={close} alt="" />
           </button>
@@ -82,6 +90,7 @@ const AddModal = () => {
               key={input.key}
               input={input}
               register={register}
+              setFocus={setFocus}
               formType="add"
             />
           ))}
@@ -95,16 +104,17 @@ const AddModal = () => {
         </div>
         <div className="flex gap-3 border-t border-gray-300 pt-3 mt-3">
           <button
-            className="border-gray-300 border p-1 w-full cursor-pointer"
-            onClick={exitModal}
-          >
-            Cancel
-          </button>
-          <button
-            className="bg-accent text-white border-gray-300 border p-1 w-full cursor-pointer"
+            className="bg-accent text-white border-gray-300 border p-1 w-full cursor-pointer order-1"
             type="submit"
           >
             Apply
+          </button>
+          <button
+            className="border-gray-300 border p-1 w-full cursor-pointer"
+            onClick={exitModal}
+            type="button"
+          >
+            Cancel
           </button>
         </div>
       </form>
