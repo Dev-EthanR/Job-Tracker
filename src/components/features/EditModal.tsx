@@ -2,26 +2,26 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, type FieldError } from "react-hook-form";
 import { z } from "zod";
 import close from "../../assets/icons/menu-close.svg";
-import useAddModal from "../../hooks/useAddModal";
 import useData from "../../hooks/useData";
 import usePreventScroll from "../../hooks/usePreventScroll";
-import { v4 as uuidv4 } from "uuid";
+import Input from "../input";
 
 // form validations
 const schema = z.object({
-  company: z.string().max(30).min(1, "Company is required"),
-  position: z.string().max(30).min(1, "Position is required"),
-  date: z.iso.date("Date is required"),
+  company: z.string().max(30).min(1, "Company cannot be empty"),
+  position: z.string().max(30).min(1, "Position cannot be empty"),
+  date: z.iso.date("Date cannot be empty"),
   notes: z.string().max(200).optional(),
 });
 
-type FormDataShape = z.infer<typeof schema>;
+export type FormDataShape = z.infer<typeof schema>;
 
-interface FormFields {
+export interface FormFields {
   name: string;
   key: keyof FormDataShape;
   type: string;
   error?: FieldError;
+  value?: string;
 }
 
 interface Props {
@@ -39,14 +39,17 @@ const EditModal = ({ cardId, open, setOpen }: Props) => {
   } = useForm({
     resolver: zodResolver(schema),
   });
-  const { setData } = useData();
-  usePreventScroll(open);
+  const { data, setData } = useData();
 
+  const cardtoEdit = data.find((d) => d.id === cardId);
+  usePreventScroll(open);
   // display nothing if add button isnt pressed
   if (!open) return null;
 
   const onSubmit = (fData: FormDataShape) => {
-    setData((prevData) => [...prevData, { id: uuidv4(), ...fData }]);
+    setData((prev) =>
+      prev.map((item) => (item.id === cardId ? { id: cardId, ...fData } : item))
+    );
     exitModal();
   };
 
@@ -58,9 +61,27 @@ const EditModal = ({ cardId, open, setOpen }: Props) => {
 
   //   form Elements
   const inputForm: FormFields[] = [
-    { name: "Company", key: "company", type: "text", error: errors.company },
-    { name: "Position", key: "position", type: "text", error: errors.position },
-    { name: "Date", key: "date", type: "date", error: errors.date },
+    {
+      name: "Company",
+      key: "company",
+      type: "text",
+      error: errors.company,
+      value: cardtoEdit?.company,
+    },
+    {
+      name: "Position",
+      key: "position",
+      type: "text",
+      error: errors.position,
+      value: cardtoEdit?.position,
+    },
+    {
+      name: "Date",
+      key: "date",
+      type: "date",
+      error: errors.date,
+      value: cardtoEdit?.date,
+    },
   ];
 
   return (
@@ -71,30 +92,22 @@ const EditModal = ({ cardId, open, setOpen }: Props) => {
       >
         <div className="flex justify-between border-b border-gray-300 pb-2 mb-2">
           <h2 className="text-2xl font-semibold">Edit Application</h2>
-          <button aria-label="close" onClick={exitModal}>
+          <button
+            aria-label="close"
+            onClick={exitModal}
+            className="cursor-pointer"
+          >
             <img className="w-5" src={close} alt="" />
           </button>
         </div>
         <div>
           {inputForm.map((input) => (
-            <div key={input.key}>
-              <label className="flex justify-between" htmlFor={input.key}>
-                <span>
-                  {input.name}: <span className="text-red-400">*</span>
-                </span>
-                {input.error && (
-                  <span className="text-red-400">{input.error.message}</span>
-                )}
-              </label>
-              <input
-                className="border-gray-300 border rounded-md mt-1 mb-3 h-8 w-full p-4 focus:outline-gray-400"
-                id={input.key}
-                type={input.type}
-                {...register(input.key)}
-                aria-required
-                autoComplete="off"
-              />
-            </div>
+            <Input
+              key={input.key}
+              input={input}
+              register={register}
+              formType="edit"
+            />
           ))}
 
           <label htmlFor="notes">Notes:</label>
@@ -102,20 +115,21 @@ const EditModal = ({ cardId, open, setOpen }: Props) => {
             id="notes"
             {...register("notes")}
             className="block w-full border-gray-300 border rounded-md mt-1 mb-3 h-20 p-4 focus:outline-gray-400"
+            defaultValue={cardtoEdit?.notes}
           ></textarea>
         </div>
         <div className="flex gap-3 border-t border-gray-300 pt-3 mt-3">
           <button
-            className="border-gray-300 border p-1 w-full"
+            className="border-gray-300 border p-1 w-full cursor-pointer"
             onClick={exitModal}
           >
             Cancel
           </button>
           <button
-            className="bg-accent text-white border-gray-300 border p-1 w-full"
+            className="bg-accent text-white border-gray-300 border p-1 w-full cursor-pointer"
             type="submit"
           >
-            Apply
+            Save
           </button>
         </div>
       </form>
