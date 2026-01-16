@@ -1,10 +1,5 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, type FieldError } from "react-hook-form";
-import { z } from "zod";
-import close from "../../assets/icons/menu-close.svg";
 import useData from "../../hooks/useData";
 import usePreventScroll from "../../hooks/usePreventScroll";
-import { v4 as uuidv4 } from "uuid";
 
 interface Props {
   cardId: string;
