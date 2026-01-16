@@ -11,8 +11,10 @@ import Input from "../input";
 
 // form validations
 const schema = z.object({
-  company: z.string().max(30).min(1, "Company is required"),
-  position: z.string().max(30).min(1, "Position is required"),
+  company: z.string().max(30).trim().min(1, "Company is required"),
+
+  position: z.string().max(30).trim().min(1, "Position is required"),
+
   date: z.iso.date("Date is required"),
   notes: z.string().max(200).optional(),
 });

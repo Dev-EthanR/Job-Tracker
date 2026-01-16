@@ -8,8 +8,8 @@ import usePreventScroll from "../../hooks/usePreventScroll";
 import Input from "../input";
 // form validations
 const schema = z.object({
-  company: z.string().max(30).min(1, "Company cannot be empty"),
-  position: z.string().max(30).min(1, "Position cannot be empty"),
+  company: z.string().max(30).trim().min(1, "Company cannot be empty"),
+  position: z.string().max(30).trim().min(1, "Position cannot be empty"),
   date: z.iso.date("Date cannot be empty"),
   notes: z.string().max(200).optional(),
 });
