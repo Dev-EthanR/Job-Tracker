@@ -6,6 +6,7 @@ import useAddModal from "../../hooks/useAddModal";
 import useData from "../../hooks/useData";
 import usePreventScroll from "../../hooks/usePreventScroll";
 import { v4 as uuidv4 } from "uuid";
+import Input from "../input";
 
 // form validations
 const schema = z.object({
@@ -77,24 +78,12 @@ const AddModal = () => {
         </div>
         <div>
           {inputForm.map((input) => (
-            <div key={input.key}>
-              <label className="flex justify-between" htmlFor={input.key}>
-                <span>
-                  {input.name}: <span className="text-red-400">*</span>
-                </span>
-                {input.error && (
-                  <span className="text-red-400">{input.error.message}</span>
-                )}
-              </label>
-              <input
-                className="border-gray-300 border rounded-md mt-1 mb-3 h-8 w-full p-4 focus:outline-gray-400"
-                id={input.key}
-                type={input.type}
-                {...register(input.key)}
-                aria-required
-                autoComplete="off"
-              />
-            </div>
+            <Input
+              key={input.key}
+              input={input}
+              register={register}
+              formType="add"
+            />
           ))}
 
           <label htmlFor="notes">Notes:</label>
