@@ -7,7 +7,7 @@ import useAddModal from "../../hooks/useAddModal";
 import useData from "../../hooks/useData";
 import usePreventScroll from "../../hooks/usePreventScroll";
 import { v4 as uuidv4 } from "uuid";
-import Input from "../input";
+import Input from "../Input";
 import useEscapeKey from "../../hooks/useEscapeKey";
 
 // form validations

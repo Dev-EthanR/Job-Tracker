@@ -12,7 +12,7 @@ interface Props {
   id: string;
   company: string;
   title: string;
-  date: Date;
+  date: string;
   status: Status;
 }
 
@@ -25,6 +25,8 @@ const Card = ({ id, company, title, date, status }: Props) => {
     setOpionsOpened(false);
     setModal(true);
   }
+
+  const formattedDate = new Date(`${date}`).toDateString().substring(4);
 
   return (
     <div className="rounded-lg shadow-md shadow-gray-300 p-4 h-fit max-w-86">
@@ -66,16 +68,14 @@ const Card = ({ id, company, title, date, status }: Props) => {
       </div>
       <div className="flex items-center justify-between md:justify-start">
         <span
-          className={`${status.color} px-2.5 py-0.5 text-sm font-semibold md:bg-transparent flex items-center gap-2 md:order-1`}
+          className={`${status.color} rounded-sm px-2.5 py-0.5 text-sm font-semibold md:bg-transparent flex items-center gap-2 md:order-1`}
         >
           <div
             className={`h-2.5 w-2.5 ${status.color} rounded-full hidden md:block`}
           ></div>
           {status.name}
         </span>
-        <span className="font-medium">
-          {date.toLocaleString("default", { month: "short" })} {date.getDate()}
-        </span>
+        <span className="font-medium">{formattedDate}</span>
       </div>
       <DeleteModal
         open={deleteModalOpen}

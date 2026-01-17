@@ -58,14 +58,16 @@ function App() {
           )}
           <div className="flex flex-col items-center md:items-start px-4 gap-3 ">
             {data.map((d) => (
-              <Card
-                key={d.id}
-                id={d.id}
-                company={d.company}
-                title={d.position}
-                date={date}
-                status={{ name: "Offer", color: "bg-interview" }}
-              />
+              <>
+                <Card
+                  key={d.id}
+                  id={d.id}
+                  company={d.company}
+                  title={d.position}
+                  date={d.date}
+                  status={{ name: "Offer", color: "bg-interview" }}
+                />
+              </>
             ))}
           </div>
         </main>
