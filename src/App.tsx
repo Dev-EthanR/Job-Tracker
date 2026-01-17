@@ -15,6 +15,7 @@ interface Data {
   company: string;
   position: string;
   date: string;
+  label?: string;
   notes?: string;
 }
 
@@ -66,7 +67,7 @@ function App() {
                       company={d.company}
                       title={d.position}
                       date={d.date}
-                      status={{ name: "Applied", color: "bg-applied" }}
+                      label={d.label}
                     />
                   </>
                 ))}
@@ -80,7 +81,7 @@ function App() {
                       company={d.company}
                       title={d.position}
                       date={d.date}
-                      status={{ name: "Interview", color: "bg-interview" }}
+                      label={d.label}
                     />
                   </>
                 ))}
@@ -94,7 +95,7 @@ function App() {
                       company={d.company}
                       title={d.position}
                       date={d.date}
-                      status={{ name: "Offer", color: "bg-offer" }}
+                      label={d.label}
                     />
                   </>
                 ))}
@@ -108,7 +109,7 @@ function App() {
                       company={d.company}
                       title={d.position}
                       date={d.date}
-                      status={{ name: "Rejected", color: "bg-reject" }}
+                      label={d.label}
                     />
                   </>
                 ))}

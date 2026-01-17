@@ -12,6 +12,7 @@ const schema = z.object({
   company: z.string().max(30).trim().min(1, "Company cannot be empty"),
   position: z.string().max(30).trim().min(1, "Position cannot be empty"),
   date: z.iso.date("Date cannot be empty"),
+  label: z.string().min(1, "Label is required"),
   notes: z.string().max(200).optional(),
 });
 

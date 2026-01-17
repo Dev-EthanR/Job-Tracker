@@ -11,12 +11,12 @@ import Input from "../Input";
 import useEscapeKey from "../../hooks/useEscapeKey";
 
 // form validations
+
 const schema = z.object({
   company: z.string().max(30).trim().min(1, "Company is required"),
-
   position: z.string().max(30).trim().min(1, "Position is required"),
-
   date: z.iso.date("Date is required"),
+  label: z.string().min(1, "Label is required"),
   notes: z.string().max(200).optional(),
 });
 
@@ -38,6 +38,7 @@ const AddModal = () => {
     setFocus,
     formState: { errors },
   } = useForm({
+    defaultValues: { label: "" },
     resolver: zodResolver(schema),
   });
   const { modalOpen, setModalOpen } = useAddModal();
@@ -99,7 +100,34 @@ const AddModal = () => {
                 formType="add"
               />
             ))}
-
+            <label className="flex justify-between" htmlFor="label">
+              <span>
+                Label:
+                <span className="text-red-400 ml-1">*</span>
+              </span>
+              {errors.label && (
+                <p className="text-red-400">{errors.label.message}</p>
+              )}
+            </label>
+            <select
+              id="label"
+              {...register("label")}
+              className="block w-full border-gray-300 border rounded-md mt-1 mb-3 h-10 px-4 mr-4 focus:outline-gray-400"
+            >
+              <option value="" selected disabled hidden></option>
+              <option className="bg-applied" value="Applied">
+                Applied
+              </option>
+              <option className="bg-interview" value="Interview">
+                Interview
+              </option>
+              <option className="bg-offer" value="Offer">
+                Offer
+              </option>
+              <option className="bg-reject" value="Reject">
+                Reject
+              </option>
+            </select>
             <label htmlFor="notes">Notes:</label>
             <textarea
               id="notes"

@@ -16,12 +16,13 @@ const Input = ({ input, register, formType, setFocus }: Props) => {
   useEffect(() => {
     setFocus("company");
   }, [setFocus]);
+
   return (
     <div>
       <label className="flex justify-between" htmlFor={input.key}>
         <span>
           {input.name}:
-          {formType === "add" && <span className="text-red-400">*</span>}
+          {formType === "add" && <span className="text-red-400 ml-1">*</span>}
         </span>
         {input.error && (
           <span className="text-red-400">{input.error.message}</span>

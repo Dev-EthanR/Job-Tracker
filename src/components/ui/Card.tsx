@@ -5,20 +5,20 @@ import deleteImg from "../../assets/icons/trash.svg";
 import DeleteModal from "../features/DeleteModal";
 import EditModal from "../features/EditModal";
 
-type Status = {
-  name: "Rejected" | "Applied" | "Interview" | "Offer";
-  color: string;
-};
-
 interface Props {
   id: string;
   company: string;
   title: string;
   date: string;
-  status: Status;
+  label: string | undefined;
 }
 
-const Card = ({ id, company, title, date, status }: Props) => {
+interface Status {
+  name: string | undefined;
+  color: string;
+}
+
+const Card = ({ id, company, title, date, label }: Props) => {
   const [optionsOpened, setOpionsOpened] = useState<boolean>(false);
   const [editModalOpen, setEditModalOpen] = useState<boolean>(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
@@ -29,6 +29,16 @@ const Card = ({ id, company, title, date, status }: Props) => {
   }
 
   const formattedDate = new Date(`${date}`).toDateString().substring(4);
+
+  const status: Status = {
+    name: label,
+    color: "",
+  };
+
+  if (label === "Applied") status.color = "bg-applied";
+  if (label === "Interview") status.color = "bg-interview";
+  if (label === "Offer") status.color = "bg-offer";
+  if (label === "Reject") status.color = "bg-reject";
 
   return (
     <div className="rounded-lg shadow-md shadow-gray-300 py-4 px-3 h-fit mx-auto w-70  md:w-50 max-w-80 xl:w-full xl:max-w-110">
