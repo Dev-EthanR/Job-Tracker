@@ -13,7 +13,7 @@ const Columns = ({ title, color, children }: Props) => {
   return (
     <article className="flex flex-col gap-4 max-w-80 xl:max-w-120 w-full">
       <button
-        className={`${color} text-center font-semibold text-2xl p-3 rounded-md flex justify-center items-center cursor-pointer mb-4 md:mb-6`}
+        className={`${color} text-center font-semibold text-2xl p-3 rounded-md flex justify-center items-center cursor-pointer mb-4 md:mb-6 select-none`}
         aria-label="toggle columns"
         onClick={() => setToggleItems((prev) => !prev)}
       >

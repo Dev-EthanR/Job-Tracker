@@ -1,5 +1,7 @@
 import { useState, type Dispatch, type SetStateAction } from "react";
-import dropdown from "../../assets/icons/dropdown.svg";
+import moreOptionsImg from "../../assets/icons/three-dots.svg";
+import editImg from "../../assets/icons/edit.svg";
+import deleteImg from "../../assets/icons/trash.svg";
 import DeleteModal from "../features/DeleteModal";
 import EditModal from "../features/EditModal";
 
@@ -44,23 +46,25 @@ const Card = ({ id, company, title, date, status }: Props) => {
           onClick={() => setOpionsOpened((prev) => !prev)}
         >
           <img
-            className="w-7 hover:translate-y-1 transition-transform duration-300 cursor-pointer ease-out"
-            src={dropdown}
+            className="w-7 hover:-translate-x-0.5 transition-transform duration-300 cursor-pointer ease-out select-none"
+            src={moreOptionsImg}
             alt=""
           />
         </button>
         {optionsOpened && (
-          <div className="absolute top-6 right-0 flex flex-col items-start bg-white border-gray-200 rounded-md shadow-sm border w-20 px-2 py-1 text-sm gap-1">
+          <div className="absolute top-6 right-0 flex flex-col items-start bg-white border-gray-200 rounded-md shadow-sm border w-22 px-2 py-1 text-sm gap-1">
             <button
-              className="hover:bg-gray-200 w-full rounded-sm text-left cursor-pointer"
+              className="hover:bg-gray-200 w-full rounded-sm text-left cursor-pointer flex items-center gap-2"
               onClick={() => modalOption(setEditModalOpen)}
             >
+              <img className="w-5" src={editImg} alt="" />
               Edit
             </button>
             <button
-              className="hover:bg-gray-200 w-full rounded-sm text-left cursor-pointer"
+              className="hover:bg-gray-200 w-full rounded-sm text-left cursor-pointer flex items-center gap-2 "
               onClick={() => modalOption(setDeleteModalOpen)}
             >
+              <img className="w-5 " src={deleteImg} alt="" />
               Delete
             </button>
           </div>
