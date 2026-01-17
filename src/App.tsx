@@ -62,32 +62,28 @@ function App() {
                 {data
                   .filter((item) => item.label === "Applied")
                   .map((d) => (
-                    <>
-                      <Card
-                        key={d.id}
-                        id={d.id}
-                        company={d.company}
-                        title={d.position}
-                        date={d.date}
-                        label={d.label}
-                      />
-                    </>
+                    <Card
+                      key={d.id}
+                      id={d.id}
+                      company={d.company}
+                      title={d.position}
+                      date={d.date}
+                      label={d.label}
+                    />
                   ))}
               </Columns>
               <Columns title="Interview" color="bg-interview">
                 {data
                   .filter((item) => item.label === "Interview")
                   .map((d) => (
-                    <>
-                      <Card
-                        key={d.id}
-                        id={d.id}
-                        company={d.company}
-                        title={d.position}
-                        date={d.date}
-                        label={d.label}
-                      />
-                    </>
+                    <Card
+                      key={d.id}
+                      id={d.id}
+                      company={d.company}
+                      title={d.position}
+                      date={d.date}
+                      label={d.label}
+                    />
                   ))}
               </Columns>
               <Columns title="Offer" color="bg-offer">
@@ -110,16 +106,14 @@ function App() {
                 {data
                   .filter((item) => item.label === "Reject")
                   .map((d) => (
-                    <>
-                      <Card
-                        key={d.id}
-                        id={d.id}
-                        company={d.company}
-                        title={d.position}
-                        date={d.date}
-                        label={d.label}
-                      />
-                    </>
+                    <Card
+                      key={d.id}
+                      id={d.id}
+                      company={d.company}
+                      title={d.position}
+                      date={d.date}
+                      label={d.label}
+                    />
                   ))}
               </Columns>
             </div>

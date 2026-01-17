@@ -32,6 +32,9 @@ interface Props {
   setOpen: (toggle: boolean) => void;
 }
 const EditModal = ({ cardId, open, setOpen }: Props) => {
+  const { data, setData } = useData();
+
+  const cardtoEdit = data.find((d) => d.id === cardId);
   const {
     register,
     reset,
@@ -40,11 +43,11 @@ const EditModal = ({ cardId, open, setOpen }: Props) => {
     setFocus,
     formState: { errors },
   } = useForm({
+    defaultValues: {
+      label: cardtoEdit?.label, // The value of the option you want selected by default
+    },
     resolver: zodResolver(schema),
   });
-  const { data, setData } = useData();
-
-  const cardtoEdit = data.find((d) => d.id === cardId);
   usePreventScroll(open);
   useEscapeKey(() => exitModal());
   // display nothing if add button isnt pressed
@@ -117,7 +120,33 @@ const EditModal = ({ cardId, open, setOpen }: Props) => {
                 formType="edit"
               />
             ))}
-
+            <label className="flex justify-between" htmlFor="label">
+              <span>
+                Label:
+                <span className="text-red-400 ml-1">*</span>
+              </span>
+              {errors.label && (
+                <p className="text-red-400">{errors.label.message}</p>
+              )}
+            </label>
+            <select
+              id="label"
+              {...register("label")}
+              className="block w-full border-gray-300 border rounded-md mt-1 mb-3 h-10 px-4 mr-4 focus:outline-gray-400"
+            >
+              <option className="bg-applied" value="Applied">
+                Applied
+              </option>
+              <option className="bg-interview" value="Interview">
+                Interview
+              </option>
+              <option className="bg-offer" value="Offer">
+                Offer
+              </option>
+              <option className="bg-reject" value="Reject">
+                Reject
+              </option>
+            </select>
             <label htmlFor="notes">Notes:</label>
             <textarea
               id="notes"
