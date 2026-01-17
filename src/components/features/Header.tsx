@@ -3,6 +3,7 @@ import {
   useState,
   type SetStateAction,
   type Dispatch,
+  type ChangeEvent,
 } from "react";
 import plus from "../../assets/icons/plus.svg";
 import AddModal from "./AddModal";
@@ -12,24 +13,37 @@ interface modalContext {
   setModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
+interface Props {
+  value: string;
+  setValue: Dispatch<SetStateAction<string>>;
+}
+
 export const AddModalCtx = createContext<modalContext | null>(null);
 
-const Header = () => {
+const Header = ({ value, setValue }: Props) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
+  const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>): void => {
+    setValue(event.target.value);
+  };
   return (
     <AddModalCtx.Provider value={{ modalOpen, setModalOpen }}>
       <header className="w-full flex justify-between items-start p-4 px-8">
         <div className="flex">
           <input type="text" placeholder="Search..." />
-          <select>
-            <option defaultValue="" selected hidden>
+          <select
+            onChange={handleSelectChange}
+            value={value}
+            aria-label="filter"
+          >
+            <option defaultValue="all" hidden>
               Filters
             </option>
-            <option>Offer</option>
-            <option>Applied</option>
-            <option>Interview</option>
-            <option>Rejected</option>
+            <option value="all">All</option>
+            <option value="offer">Offer</option>
+            <option value="applied">Applied</option>
+            <option value="interview">Interview</option>
+            <option value="rejected">Rejected</option>
           </select>
         </div>
         <button

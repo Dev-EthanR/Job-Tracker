@@ -30,8 +30,11 @@ function App() {
     const storedData: string | null = localStorage.getItem("jobData");
     return storedData ? JSON.parse(storedData) : [];
   });
+  const [selectedValue, setSelectedValue] = useState<string>("all");
+
   localStorage.setItem("jobData", JSON.stringify(data));
 
+  console.log(selectedValue);
   return (
     <DataCtx.Provider value={{ data, setData }}>
       <div
@@ -40,7 +43,7 @@ function App() {
       >
         <NavBar title="My Applications" />
         <main className="grow pb-25 md:pb-0">
-          <Header />
+          <Header value={selectedValue} setValue={setSelectedValue} />
           {data.length <= 0 ? (
             <div className="flex flex-col items-center w-full text-center justify-center mt-20 ">
               <img
@@ -56,13 +59,19 @@ function App() {
               </p>
             </div>
           ) : (
-            <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 px-4 gap-y-4 ">
-              <Columns title="Applied" color="bg-applied" data={data} />
-              <Columns title="Interview" color="bg-interview" data={data} />
-
-              <Columns title="Offer" color="bg-offer" data={data} />
-
-              <Columns title="Rejected" color="bg-rejected" data={data} />
+            <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 px-4 gap-y-4">
+              {selectedValue === "applied" || selectedValue === "all" ? (
+                <Columns title="Applied" color="bg-applied" data={data} />
+              ) : null}
+              {selectedValue === "interview" || selectedValue === "all" ? (
+                <Columns title="Interview" color="bg-interview" data={data} />
+              ) : null}
+              {selectedValue === "offer" || selectedValue === "all" ? (
+                <Columns title="Offer" color="bg-offer" data={data} />
+              ) : null}
+              {selectedValue === "rejected" || selectedValue === "all" ? (
+                <Columns title="Rejected" color="bg-rejected" data={data} />
+              ) : null}
             </div>
           )}
         </main>
