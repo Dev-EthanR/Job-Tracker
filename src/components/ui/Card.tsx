@@ -10,11 +10,11 @@ interface Props {
   company: string;
   title: string;
   date: string;
-  label: string | undefined;
+  label: string;
 }
 
 interface Status {
-  name: string | undefined;
+  name: string;
   color: string;
 }
 

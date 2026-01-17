@@ -15,7 +15,7 @@ interface Data {
   company: string;
   position: string;
   date: string;
-  label?: string;
+  label: string;
   notes?: string;
 }
 
@@ -59,60 +59,68 @@ function App() {
           ) : (
             <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 px-4 gap-y-4 ">
               <Columns title="Applied" color="bg-applied">
-                {data.map((d) => (
-                  <>
-                    <Card
-                      key={d.id}
-                      id={d.id}
-                      company={d.company}
-                      title={d.position}
-                      date={d.date}
-                      label={d.label}
-                    />
-                  </>
-                ))}
+                {data
+                  .filter((item) => item.label === "Applied")
+                  .map((d) => (
+                    <>
+                      <Card
+                        key={d.id}
+                        id={d.id}
+                        company={d.company}
+                        title={d.position}
+                        date={d.date}
+                        label={d.label}
+                      />
+                    </>
+                  ))}
               </Columns>
               <Columns title="Interview" color="bg-interview">
-                {data.map((d) => (
-                  <>
-                    <Card
-                      key={d.id}
-                      id={d.id}
-                      company={d.company}
-                      title={d.position}
-                      date={d.date}
-                      label={d.label}
-                    />
-                  </>
-                ))}
+                {data
+                  .filter((item) => item.label === "Interview")
+                  .map((d) => (
+                    <>
+                      <Card
+                        key={d.id}
+                        id={d.id}
+                        company={d.company}
+                        title={d.position}
+                        date={d.date}
+                        label={d.label}
+                      />
+                    </>
+                  ))}
               </Columns>
               <Columns title="Offer" color="bg-offer">
-                {data.map((d) => (
-                  <>
-                    <Card
-                      key={d.id}
-                      id={d.id}
-                      company={d.company}
-                      title={d.position}
-                      date={d.date}
-                      label={d.label}
-                    />
-                  </>
-                ))}
+                {data
+                  .filter((item) => item.label === "Offer")
+                  .map((d) => (
+                    <>
+                      <Card
+                        key={d.id}
+                        id={d.id}
+                        company={d.company}
+                        title={d.position}
+                        date={d.date}
+                        label={d.label}
+                      />
+                    </>
+                  ))}
               </Columns>
               <Columns title="Rejected" color="bg-reject">
-                {data.map((d) => (
-                  <>
-                    <Card
-                      key={d.id}
-                      id={d.id}
-                      company={d.company}
-                      title={d.position}
-                      date={d.date}
-                      label={d.label}
-                    />
-                  </>
-                ))}
+                {data
+                  .filter((item) => item.label === "Reject")
+                  .map((d) => (
+                    <>
+                      <Card
+                        key={d.id}
+                        id={d.id}
+                        company={d.company}
+                        title={d.position}
+                        date={d.date}
+                        label={d.label}
+                      />
+                    </>
+                  ))}
               </Columns>
             </div>
           )}
