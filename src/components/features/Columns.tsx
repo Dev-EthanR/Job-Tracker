@@ -12,6 +12,8 @@ interface Props {
 const Columns = ({ title, color, data }: Props) => {
   const [toggleItems, setToggleItems] = useState<boolean>(true);
 
+  const filteredData = data.filter((item) => item.label === title);
+
   return (
     <article className="flex flex-col gap-4 max-w-80 xl:max-w-120 w-full">
       <button
@@ -19,7 +21,9 @@ const Columns = ({ title, color, data }: Props) => {
         aria-label="toggle columns"
         onClick={() => setToggleItems((prev) => !prev)}
       >
-        <h2 className="ml-auto pl-5">{title}</h2>
+        <h2 className="ml-auto pl-5">
+          {title} ({filteredData.length})
+        </h2>
         <img
           className={`max-w-10 ml-auto transition-transform duration-300 ${toggleItems ? "rotate-0" : "rotate-90"}`}
           src={icon}
@@ -27,18 +31,16 @@ const Columns = ({ title, color, data }: Props) => {
         />
       </button>
       {toggleItems &&
-        data
-          .filter((item) => item.label === title)
-          .map((d) => (
-            <Card
-              key={d.id}
-              id={d.id}
-              company={d.company}
-              title={d.position}
-              date={d.date}
-              label={d.label}
-            />
-          ))}
+        filteredData.map((d) => (
+          <Card
+            key={d.id}
+            id={d.id}
+            company={d.company}
+            title={d.position}
+            date={d.date}
+            label={d.label}
+          />
+        ))}
     </article>
   );
 };
