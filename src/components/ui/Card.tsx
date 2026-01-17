@@ -38,7 +38,7 @@ const Card = ({ id, company, title, date, label }: Props) => {
   if (label === "Applied") status.color = "bg-applied";
   if (label === "Interview") status.color = "bg-interview";
   if (label === "Offer") status.color = "bg-offer";
-  if (label === "Reject") status.color = "bg-reject";
+  if (label === "Rejected") status.color = "bg-rejected";
 
   return (
     <div className="rounded-lg shadow-md shadow-gray-300 py-4 px-3 h-fit mx-auto w-70  md:w-50 max-w-80 xl:w-full xl:max-w-110">

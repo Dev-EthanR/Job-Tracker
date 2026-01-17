@@ -1,13 +1,15 @@
-import { useState, type ReactNode } from "react";
+import { useState } from "react";
+import type { Data } from "../../App";
 import icon from "../../assets/icons/dropdown.svg";
+import Card from "../ui/Card";
 
 interface Props {
   title: string;
   color: string;
-  children: ReactNode;
+  data: Data[];
 }
 
-const Columns = ({ title, color, children }: Props) => {
+const Columns = ({ title, color, data }: Props) => {
   const [toggleItems, setToggleItems] = useState<boolean>(true);
 
   return (
@@ -24,7 +26,19 @@ const Columns = ({ title, color, children }: Props) => {
           alt=""
         />
       </button>
-      {toggleItems && children}
+      {toggleItems &&
+        data
+          .filter((item) => item.label === title)
+          .map((d) => (
+            <Card
+              key={d.id}
+              id={d.id}
+              company={d.company}
+              title={d.position}
+              date={d.date}
+              label={d.label}
+            />
+          ))}
     </article>
   );
 };

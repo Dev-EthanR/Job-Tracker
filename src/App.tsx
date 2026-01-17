@@ -4,13 +4,12 @@ import {
   type Dispatch,
   type SetStateAction,
 } from "react";
-import Header from "./components/features/Header";
-import NavBar from "./components/features/NavBar";
-import Card from "./components/ui/Card";
 import notFoundImage from "./assets/images/not-found.png";
 import Columns from "./components/features/Columns";
+import Header from "./components/features/Header";
+import NavBar from "./components/features/NavBar";
 
-interface Data {
+export interface Data {
   id: string;
   company: string;
   position: string;
@@ -58,64 +57,12 @@ function App() {
             </div>
           ) : (
             <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 px-4 gap-y-4 ">
-              <Columns title="Applied" color="bg-applied">
-                {data
-                  .filter((item) => item.label === "Applied")
-                  .map((d) => (
-                    <Card
-                      key={d.id}
-                      id={d.id}
-                      company={d.company}
-                      title={d.position}
-                      date={d.date}
-                      label={d.label}
-                    />
-                  ))}
-              </Columns>
-              <Columns title="Interview" color="bg-interview">
-                {data
-                  .filter((item) => item.label === "Interview")
-                  .map((d) => (
-                    <Card
-                      key={d.id}
-                      id={d.id}
-                      company={d.company}
-                      title={d.position}
-                      date={d.date}
-                      label={d.label}
-                    />
-                  ))}
-              </Columns>
-              <Columns title="Offer" color="bg-offer">
-                {data
-                  .filter((item) => item.label === "Offer")
-                  .map((d) => (
-                    <>
-                      <Card
-                        key={d.id}
-                        id={d.id}
-                        company={d.company}
-                        title={d.position}
-                        date={d.date}
-                        label={d.label}
-                      />
-                    </>
-                  ))}
-              </Columns>
-              <Columns title="Rejected" color="bg-reject">
-                {data
-                  .filter((item) => item.label === "Reject")
-                  .map((d) => (
-                    <Card
-                      key={d.id}
-                      id={d.id}
-                      company={d.company}
-                      title={d.position}
-                      date={d.date}
-                      label={d.label}
-                    />
-                  ))}
-              </Columns>
+              <Columns title="Applied" color="bg-applied" data={data} />
+              <Columns title="Interview" color="bg-interview" data={data} />
+
+              <Columns title="Offer" color="bg-offer" data={data} />
+
+              <Columns title="Rejected" color="bg-rejected" data={data} />
             </div>
           )}
         </main>

@@ -124,7 +124,7 @@ const AddModal = () => {
               <option className="bg-offer" value="Offer">
                 Offer
               </option>
-              <option className="bg-reject" value="Reject">
+              <option className="bg-rejected" value="Rejected">
                 Reject
               </option>
             </select>
