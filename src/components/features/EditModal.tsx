@@ -5,7 +5,7 @@ import { FocusTrap } from "focus-trap-react";
 import close from "../../assets/icons/menu-close.svg";
 import useData from "../../hooks/useData";
 import usePreventScroll from "../../hooks/usePreventScroll";
-import Input from "../input";
+import Input from "../Input";
 import useEscapeKey from "../../hooks/useEscapeKey";
 // form validations
 const schema = z.object({
@@ -51,7 +51,9 @@ const EditModal = ({ cardId, open, setOpen }: Props) => {
 
   const onSubmit = (fData: FormDataShape) => {
     setData((prev) =>
-      prev.map((item) => (item.id === cardId ? { id: cardId, ...fData } : item))
+      prev.map((item) =>
+        item.id === cardId ? { id: cardId, ...fData } : item,
+      ),
     );
     exitModal();
   };
