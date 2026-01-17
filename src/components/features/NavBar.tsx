@@ -20,7 +20,7 @@ const NavBar = ({ title }: Props) => {
 
   return (
     <>
-      <header className="bg-primary w-full md:hidden">
+      <header className="bg-secondary w-full md:hidden">
         <div className="flex justify-between p-2 items-center ">
           <h1 className="text-2xl font-bold">{title}</h1>
           <button onClick={() => setOpen((prev) => !prev)}>
@@ -29,7 +29,7 @@ const NavBar = ({ title }: Props) => {
         </div>
         {open && <div className="text-center">{navigations()}</div>}
       </header>
-      <div className="bg-primary w-40 h-screen sticky top-0 p-2 z-10 hidden md:block">
+      <div className="bg-secondary w-40 h-screen sticky top-0 p-2 z-10 hidden md:block">
         {navigations()}
       </div>
     </>

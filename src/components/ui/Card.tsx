@@ -41,7 +41,7 @@ const Card = ({ id, company, title, date, label }: Props) => {
   if (label === "Rejected") status.color = "bg-rejected";
 
   return (
-    <div className="rounded-lg shadow-md shadow-gray-300 py-4 px-3 h-fit mx-auto w-70  md:w-50 max-w-80 xl:w-full xl:max-w-110">
+    <div className="bg-white rounded-lg shadow-md shadow-gray-300 py-4 px-3 h-fit mx-auto w-70  md:w-50 max-w-80 xl:w-full xl:max-w-110">
       <div className="flex justify-between items-start  mb-2 relative">
         <div className="flex gap-1 flex-col md:flex-row md:items-center md:gap-x-5 flex-wrap">
           <h3 className="tracking-tight text-accent text-xl font-bold md:text-2xl">
