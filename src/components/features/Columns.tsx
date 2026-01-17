@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { Data } from "../../App";
 import icon from "../../assets/icons/dropdown.svg";
 import Card from "../ui/Card";
-import notFoundImage from "../../assets/images/not-found.png";
+import NotFound from "./NotFound";
 
 interface Props {
   title: string;
@@ -34,19 +34,11 @@ const Columns = ({ title, color, data }: Props) => {
 
       {toggleItems &&
         (filteredData.length <= 0 ? (
-          <div className="flex flex-col items-center justify-center h-full text-center">
-            <img
-              className="w-30"
-              src={notFoundImage}
-              alt="No applications found"
-            />
-            <h1 className="font-bold text-2xl mb-2 md:text2xl">
-              No applications here yet
-            </h1>
-            <p className="text-gray-600 w-60 md:w-full md:text-base">
-              Add one or drag a card here
-            </p>
-          </div>
+          <NotFound
+            heading="No applications here yet"
+            subtext="Add one or drag a card here"
+            type="column"
+          />
         ) : (
           filteredData.map((d) => (
             <Card

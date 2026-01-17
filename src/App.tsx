@@ -4,10 +4,10 @@ import {
   type Dispatch,
   type SetStateAction,
 } from "react";
-import notFoundImage from "./assets/images/not-found.png";
 import Columns from "./components/features/Columns";
 import Header from "./components/features/Header";
 import NavBar from "./components/features/NavBar";
+import NotFound from "./components/features/NotFound";
 
 export interface Data {
   id: string;
@@ -42,19 +42,11 @@ function App() {
           <Header value={selectedValue} setValue={setSelectedValue} />
           <section className="flex-1 bg-primary pt-12">
             {data.length <= 0 ? (
-              <div className="flex flex-col items-center justify-center h-full text-center">
-                <img
-                  className="w-50 md:w-80"
-                  src={notFoundImage}
-                  alt="No applications found"
-                />
-                <h1 className="font-bold text-2xl mb-2 md:text-4xl">
-                  No applications yet
-                </h1>
-                <p className="text-gray-600 w-60 md:w-full md:text-lg">
-                  Get started by adding your first job application
-                </p>
-              </div>
+              <NotFound
+                heading="No applications yet"
+                subtext="et started by adding your first job application"
+                type="main"
+              />
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 px-4 gap-y-4 pb-25 md:pb-0 ">
                 {selectedValue === "applied" || selectedValue === "all" ? (
