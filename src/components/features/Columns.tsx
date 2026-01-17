@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { Data } from "../../App";
 import icon from "../../assets/icons/dropdown.svg";
 import Card from "../ui/Card";
+import notFoundImage from "../../assets/images/not-found.png";
 
 interface Props {
   title: string;
@@ -30,16 +31,33 @@ const Columns = ({ title, color, data }: Props) => {
           alt=""
         />
       </button>
+
       {toggleItems &&
-        filteredData.map((d) => (
-          <Card
-            key={d.id}
-            id={d.id}
-            company={d.company}
-            title={d.position}
-            date={d.date}
-            label={d.label}
-          />
+        (filteredData.length <= 0 ? (
+          <div className="flex flex-col items-center justify-center h-full text-center">
+            <img
+              className="w-30"
+              src={notFoundImage}
+              alt="No applications found"
+            />
+            <h1 className="font-bold text-2xl mb-2 md:text2xl">
+              No applications here yet
+            </h1>
+            <p className="text-gray-600 w-60 md:w-full md:text-base">
+              Add one or drag a card here
+            </p>
+          </div>
+        ) : (
+          filteredData.map((d) => (
+            <Card
+              key={d.id}
+              id={d.id}
+              company={d.company}
+              title={d.position}
+              date={d.date}
+              label={d.label}
+            />
+          ))
         ))}
     </article>
   );
