@@ -26,7 +26,6 @@ interface DataType {
 export const DataCtx = createContext<DataType | null>(null);
 
 function App() {
-  const date: Date = new Date();
   const [data, setData] = useState<Data[]>(() => {
     const storedData: string | null = localStorage.getItem("jobData");
     return storedData ? JSON.parse(storedData) : [];
@@ -42,7 +41,7 @@ function App() {
         <NavBar title="My Applications" />
         <main className="grow pb-25 md:pb-0">
           <Header />
-          {data.length <= 0 && (
+          {data.length <= 0 ? (
             <div className="flex flex-col items-center w-full text-center justify-center mt-20 ">
               <img
                 className="w-50 md:w-80"
@@ -56,65 +55,66 @@ function App() {
                 Get started by adding your first job application
               </p>
             </div>
+          ) : (
+            <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 px-4 gap-y-4 ">
+              <Columns title="Applied" color="bg-applied">
+                {data.map((d) => (
+                  <>
+                    <Card
+                      key={d.id}
+                      id={d.id}
+                      company={d.company}
+                      title={d.position}
+                      date={d.date}
+                      status={{ name: "Applied", color: "bg-applied" }}
+                    />
+                  </>
+                ))}
+              </Columns>
+              <Columns title="Interview" color="bg-interview">
+                {data.map((d) => (
+                  <>
+                    <Card
+                      key={d.id}
+                      id={d.id}
+                      company={d.company}
+                      title={d.position}
+                      date={d.date}
+                      status={{ name: "Interview", color: "bg-interview" }}
+                    />
+                  </>
+                ))}
+              </Columns>
+              <Columns title="Offer" color="bg-offer">
+                {data.map((d) => (
+                  <>
+                    <Card
+                      key={d.id}
+                      id={d.id}
+                      company={d.company}
+                      title={d.position}
+                      date={d.date}
+                      status={{ name: "Offer", color: "bg-offer" }}
+                    />
+                  </>
+                ))}
+              </Columns>
+              <Columns title="Rejected" color="bg-reject">
+                {data.map((d) => (
+                  <>
+                    <Card
+                      key={d.id}
+                      id={d.id}
+                      company={d.company}
+                      title={d.position}
+                      date={d.date}
+                      status={{ name: "Rejected", color: "bg-reject" }}
+                    />
+                  </>
+                ))}
+              </Columns>
+            </div>
           )}
-          <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 px-4 gap-y-4 ">
-            <Columns title="Applied" color="bg-applied">
-              {data.map((d) => (
-                <>
-                  <Card
-                    key={d.id}
-                    id={d.id}
-                    company={d.company}
-                    title={d.position}
-                    date={d.date}
-                    status={{ name: "Applied", color: "bg-applied" }}
-                  />
-                </>
-              ))}
-            </Columns>
-            <Columns title="Interview" color="bg-interview">
-              {data.map((d) => (
-                <>
-                  <Card
-                    key={d.id}
-                    id={d.id}
-                    company={d.company}
-                    title={d.position}
-                    date={d.date}
-                    status={{ name: "Interview", color: "bg-interview" }}
-                  />
-                </>
-              ))}
-            </Columns>
-            <Columns title="Offer" color="bg-offer">
-              {data.map((d) => (
-                <>
-                  <Card
-                    key={d.id}
-                    id={d.id}
-                    company={d.company}
-                    title={d.position}
-                    date={d.date}
-                    status={{ name: "Offer", color: "bg-offer" }}
-                  />
-                </>
-              ))}
-            </Columns>
-            <Columns title="Rejected" color="bg-reject">
-              {data.map((d) => (
-                <>
-                  <Card
-                    key={d.id}
-                    id={d.id}
-                    company={d.company}
-                    title={d.position}
-                    date={d.date}
-                    status={{ name: "Rejected", color: "bg-reject" }}
-                  />
-                </>
-              ))}
-            </Columns>
-          </div>
         </main>
       </div>
     </DataCtx.Provider>
