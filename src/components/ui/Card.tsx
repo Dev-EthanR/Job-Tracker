@@ -29,8 +29,8 @@ const Card = ({ id, company, title, date, status }: Props) => {
   const formattedDate = new Date(`${date}`).toDateString().substring(4);
 
   return (
-    <div className="rounded-lg shadow-md shadow-gray-300 p-4 h-fit max-w-86">
-      <div className="flex justify-between items-start w-60 mb-2 md:w-80 relative">
+    <div className="rounded-lg shadow-md shadow-gray-300 py-4 px-3 h-fit mx-auto w-70  md:w-50 max-w-80 xl:w-full xl:max-w-110">
+      <div className="flex justify-between items-start  mb-2 relative">
         <div className="flex gap-1 flex-col md:flex-row md:items-center md:gap-x-5 flex-wrap">
           <h3 className="tracking-tight text-accent text-xl font-bold md:text-2xl">
             {company}
@@ -75,7 +75,9 @@ const Card = ({ id, company, title, date, status }: Props) => {
           ></div>
           {status.name}
         </span>
-        <span className="font-medium">{formattedDate}</span>
+        <span className="font-medium text-xs tracking-tight">
+          {formattedDate}
+        </span>
       </div>
       <DeleteModal
         open={deleteModalOpen}
