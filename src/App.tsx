@@ -40,7 +40,7 @@ function App() {
         <NavBar title="My Applications " />
         <main className="flex flex-col flex-1 ">
           <Header value={selectedValue} setValue={setSelectedValue} />
-          <section className="flex-1 bg-primary pt-12">
+          <section className="flex-1 bg-primary pt-12 flex justify-center md:block">
             {data.length <= 0 ? (
               <NotFound
                 heading="No applications yet"
