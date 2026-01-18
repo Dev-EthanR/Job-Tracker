@@ -1,5 +1,6 @@
 import {
   createContext,
+  useEffect,
   useState,
   type Dispatch,
   type SetStateAction,
@@ -23,6 +24,11 @@ interface DataType {
   setData: Dispatch<SetStateAction<Data[]>>;
 }
 
+interface Columns {
+  id: string;
+  title: string;
+  color: string;
+}
 export const DataCtx = createContext<DataType | null>(null);
 
 function App() {
@@ -32,7 +38,16 @@ function App() {
   });
   const [selectedValue, setSelectedValue] = useState<string>("all");
 
-  localStorage.setItem("jobData", JSON.stringify(data));
+  useEffect(() => {
+    localStorage.setItem("jobData", JSON.stringify(data));
+  }, [data]);
+
+  const columns: Columns[] = [
+    { id: "applied", title: "Applied", color: "bg-applied" },
+    { id: "interview", title: "Interview", color: "bg-interview" },
+    { id: "offer", title: "Offer", color: "bg-offer" },
+    { id: "rejected", title: "Rejected", color: "bg-rejected" },
+  ];
 
   return (
     <DataCtx.Provider value={{ data, setData }}>
@@ -49,18 +64,11 @@ function App() {
               />
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 px-4 gap-y-4 pb-25 md:pb-0 ">
-                {selectedValue === "applied" || selectedValue === "all" ? (
-                  <Columns title="Applied" color="bg-applied" data={data} />
-                ) : null}
-                {selectedValue === "interview" || selectedValue === "all" ? (
-                  <Columns title="Interview" color="bg-interview" data={data} />
-                ) : null}
-                {selectedValue === "offer" || selectedValue === "all" ? (
-                  <Columns title="Offer" color="bg-offer" data={data} />
-                ) : null}
-                {selectedValue === "rejected" || selectedValue === "all" ? (
-                  <Columns title="Rejected" color="bg-rejected" data={data} />
-                ) : null}
+                {columns.map((column) =>
+                  selectedValue === column.id || selectedValue === "all" ? (
+                    <Columns key={column.id} column={column} data={data} />
+                  ) : null,
+                )}
               </div>
             )}
           </section>

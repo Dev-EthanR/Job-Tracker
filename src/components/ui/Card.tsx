@@ -1,54 +1,38 @@
-import { useState, type Dispatch, type SetStateAction } from "react";
-import moreOptionsImg from "../../assets/icons/three-dots.svg";
+import { useState } from "react";
+import type { Data } from "../../App";
 import editImg from "../../assets/icons/edit.svg";
+import moreOptionsImg from "../../assets/icons/three-dots.svg";
 import deleteImg from "../../assets/icons/trash.svg";
 import DeleteModal from "../features/DeleteModal";
 import EditModal from "../features/EditModal";
 
 interface Props {
-  id: string;
-  company: string;
-  title: string;
-  date: string;
-  label: string;
-}
-
-interface Status {
-  name: string;
+  cardData: Data;
   color: string;
 }
 
-const Card = ({ id, company, title, date, label }: Props) => {
+const Card = ({ cardData, color }: Props) => {
   const [optionsOpened, setOpionsOpened] = useState<boolean>(false);
   const [editModalOpen, setEditModalOpen] = useState<boolean>(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
 
-  function modalOption(setModal: Dispatch<SetStateAction<boolean>>): void {
+  function modalOption(setModal: (option: boolean) => void): void {
     setOpionsOpened(false);
     setModal(true);
   }
-
-  const formattedDate = new Date(`${date}`).toDateString().substring(4);
-
-  const status: Status = {
-    name: label,
-    color: "",
-  };
-
-  if (label === "Applied") status.color = "bg-applied";
-  if (label === "Interview") status.color = "bg-interview";
-  if (label === "Offer") status.color = "bg-offer";
-  if (label === "Rejected") status.color = "bg-rejected";
+  const formattedDate = new Date(`${cardData.date}`)
+    .toDateString()
+    .substring(4);
 
   return (
     <div className="bg-white rounded-lg shadow-md shadow-gray-300 py-4 px-3 h-fit mx-auto w-70  md:w-50 max-w-80 xl:w-full xl:max-w-110">
       <div className="flex justify-between items-start  mb-2 relative">
         <div className="flex gap-1 flex-col md:flex-row md:items-center md:gap-x-5 flex-wrap">
           <h3 className="tracking-tight text-accent text-xl font-bold md:text-3xl">
-            {company}
+            {cardData.company}
           </h3>
           <h4 className="tracking-tight text-sm md:text-base font-medium text-gray-600">
-            {title}
+            {cardData.position}
           </h4>
         </div>
         <button
@@ -82,12 +66,12 @@ const Card = ({ id, company, title, date, label }: Props) => {
       </div>
       <div className="flex items-center justify-between md:justify-start">
         <span
-          className={`${status.color} rounded-sm px-2.5 py-0.5 text-sm font-semibold md:bg-transparent flex items-center gap-2 md:order-1`}
+          className={`${color} rounded-sm px-2.5 py-0.5 text-sm font-semibold md:bg-transparent flex items-center gap-2 md:order-1`}
         >
           <div
-            className={`h-2.5 w-2.5 ${status.color} rounded-full hidden md:block`}
+            className={`h-2.5 w-2.5 ${color} rounded-full hidden md:block`}
           ></div>
-          {status.name}
+          {cardData.label}
         </span>
         <span className="font-medium text-xs tracking-tight">
           {formattedDate}
@@ -96,9 +80,13 @@ const Card = ({ id, company, title, date, label }: Props) => {
       <DeleteModal
         open={deleteModalOpen}
         setOpen={setDeleteModalOpen}
-        cardId={id}
+        cardId={cardData.id}
       />
-      <EditModal open={editModalOpen} setOpen={setEditModalOpen} cardId={id} />
+      <EditModal
+        open={editModalOpen}
+        setOpen={setEditModalOpen}
+        cardId={cardData.id}
+      />
     </div>
   );
 };
