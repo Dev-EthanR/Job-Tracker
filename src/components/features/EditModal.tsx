@@ -1,12 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, type FieldError } from "react-hook-form";
 import { z } from "zod";
-import { FocusTrap } from "focus-trap-react";
 import close from "../../assets/icons/menu-close.svg";
 import useData from "../../hooks/useData";
-import usePreventScroll from "../../hooks/usePreventScroll";
 import Input from "../Input";
-import useEscapeKey from "../../hooks/useEscapeKey";
 import ModalShell from "./ModalShell";
 // form validations
 const schema = z.object({
@@ -49,10 +46,6 @@ const EditModal = ({ cardId, open, setOpen }: Props) => {
     },
     resolver: zodResolver(schema),
   });
-  usePreventScroll(open);
-  useEscapeKey(() => exitModal());
-  // display nothing if add button isnt pressed
-  if (!open) return null;
 
   const onSubmit = (fData: FormDataShape) => {
     setData((prev) =>
