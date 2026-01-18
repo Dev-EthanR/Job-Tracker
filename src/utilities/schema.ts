@@ -1,4 +1,3 @@
-import type { FieldError } from "react-hook-form";
 import { z } from "zod";
 
 export const schema = z.object({
@@ -10,11 +9,3 @@ export const schema = z.object({
 });
 
 export type FormDataShape = z.infer<typeof schema>;
-
-export interface FormFields {
-  name: string;
-  key: keyof FormDataShape;
-  type: string;
-  error?: FieldError;
-  value?: string;
-}

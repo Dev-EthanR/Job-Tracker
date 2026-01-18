@@ -1,10 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import {
-  schema,
-  type FormDataShape,
-  type FormFields,
-} from "../../utilities/schema";
+import { schema, type FormDataShape } from "../../utilities/schema";
 import { useEffect } from "react";
 import ModalContainer from "../features/ModalContainer";
 import FormHeader from "./FormHeader";
@@ -12,6 +8,7 @@ import Input from "./Input";
 import type { FormType } from "./Input";
 import LabelOptions from "./LabelOptions";
 import FormButton from "./FormButton";
+import type FormFields from "../../Entities/FormFields";
 
 interface Props {
   id: FormType;

@@ -1,7 +1,7 @@
-// import { useEffect, useRef } from "react";
 import { useEffect } from "react";
-import { type FormFields, type FormDataShape } from "../../utilities/schema";
 import { type UseFormRegister, type UseFormSetFocus } from "react-hook-form";
+import type FormFields from "../../Entities/FormFields";
+import { type FormDataShape } from "../../utilities/schema";
 
 export type FormType = "add" | "edit";
 
@@ -33,7 +33,6 @@ const Input = ({ input, register, formType, setFocus }: Props) => {
         id={input.key}
         type={input.type}
         aria-required
-        defaultValue={formType === "edit" ? input.value : ""}
         autoComplete="off"
         {...register(input.key)}
       />
