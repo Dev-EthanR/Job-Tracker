@@ -1,11 +1,12 @@
 import { FocusTrap } from "focus-trap-react";
 import useEscapeKey from "../../hooks/useEscapeKey";
 import usePreventScroll from "../../hooks/usePreventScroll";
+import type { ReactNode } from "react";
 
 interface Props {
   open: boolean;
   onClose: () => void;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 const ModalContainer = ({ open, onClose, children }: Props) => {
   usePreventScroll(open);

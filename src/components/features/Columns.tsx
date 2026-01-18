@@ -1,14 +1,9 @@
 import { useState } from "react";
-import type { Data } from "../../App";
+import type Data from "../../Entities/Data";
 import icon from "../../assets/icons/dropdown.svg";
 import Card from "../ui/Card";
 import NotFound from "./NotFound";
-
-interface ColumnDetails {
-  id: string;
-  title: string;
-  color: string;
-}
+import type ColumnDetails from "../../Entities/ColumnDetails";
 
 interface Props {
   column: ColumnDetails;

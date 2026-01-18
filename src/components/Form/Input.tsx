@@ -3,13 +3,13 @@ import { useEffect } from "react";
 import { type FormFields, type FormDataShape } from "../../utilities/schema";
 import { type UseFormRegister, type UseFormSetFocus } from "react-hook-form";
 
-type form = "add" | "edit";
+export type FormType = "add" | "edit";
 
 interface Props {
   input: FormFields;
   register: UseFormRegister<FormDataShape>;
   setFocus: UseFormSetFocus<FormDataShape>;
-  formType: form;
+  formType: FormType;
 }
 
 const Input = ({ input, register, formType, setFocus }: Props) => {

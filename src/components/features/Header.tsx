@@ -1,21 +1,15 @@
-import {
-  createContext,
-  useState,
-  type SetStateAction,
-  type Dispatch,
-  type ChangeEvent,
-} from "react";
+import { createContext, useState, type ChangeEvent } from "react";
 import plus from "../../assets/icons/plus.svg";
 import AddModal from "./AddModal";
 
 interface modalContext {
   modalOpen: boolean;
-  setModalOpen: Dispatch<SetStateAction<boolean>>;
+  setModalOpen: (toggle: boolean) => void;
 }
 
 interface Props {
   value: string;
-  setValue: Dispatch<SetStateAction<string>>;
+  setValue: (value: string) => void;
 }
 
 export const AddModalCtx = createContext<modalContext | null>(null);

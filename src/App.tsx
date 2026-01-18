@@ -9,26 +9,13 @@ import Columns from "./components/features/Columns";
 import Header from "./components/features/Header";
 import NavBar from "./components/features/NavBar";
 import NotFound from "./components/features/NotFound";
-
-export interface Data {
-  id: string;
-  company: string;
-  position: string;
-  date: string;
-  label: string;
-  notes?: string;
-}
-
+import type Data from "./Entities/Data";
+import type ColumnDetails from "./Entities/ColumnDetails";
 interface DataType {
   data: Data[];
   setData: Dispatch<SetStateAction<Data[]>>;
 }
 
-interface Columns {
-  id: string;
-  title: string;
-  color: string;
-}
 export const DataCtx = createContext<DataType | null>(null);
 
 function App() {
@@ -42,7 +29,7 @@ function App() {
     localStorage.setItem("jobData", JSON.stringify(data));
   }, [data]);
 
-  const columns: Columns[] = [
+  const columns: ColumnDetails[] = [
     { id: "applied", title: "Applied", color: "bg-applied" },
     { id: "interview", title: "Interview", color: "bg-interview" },
     { id: "offer", title: "Offer", color: "bg-offer" },

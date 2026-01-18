@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { Data } from "../../App";
+import type Data from "../../Entities/Data";
 import DeleteModal from "../features/DeleteModal";
 import EditModal from "../features/EditModal";
 import CardButton from "./Card/CardButton";
