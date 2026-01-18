@@ -34,6 +34,7 @@ const DeleteModal = ({ cardId, open, setOpen }: Props) => {
           Are you sure you want to delete the application? <br /> This action
           cannot be undone
         </p>
+
         <div className="flex justify-between gap-6">
           <button
             className="border-gray-300 border w-30 rounded-lg p-1 cursor-pointer"

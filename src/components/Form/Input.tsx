@@ -1,6 +1,6 @@
 // import { useEffect, useRef } from "react";
 import { useEffect } from "react";
-import { type FormFields, type FormDataShape } from "../features/EditModal";
+import { type FormFields, type FormDataShape } from "../../utilities/schema";
 import { type UseFormRegister, type UseFormSetFocus } from "react-hook-form";
 
 type form = "add" | "edit";
