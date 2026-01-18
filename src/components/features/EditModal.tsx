@@ -3,8 +3,9 @@ import { useForm, type FieldError } from "react-hook-form";
 import { z } from "zod";
 import close from "../../assets/icons/menu-close.svg";
 import useData from "../../hooks/useData";
-import Input from "../Input";
-import ModalShell from "./ModalShell";
+import Input from "../Form/Input";
+import ModalContainer from "./ModalContainer";
+import FormButton from "../Form/FormButton";
 // form validations
 const schema = z.object({
   company: z.string().max(30).trim().min(1, "Company cannot be empty"),
@@ -88,7 +89,7 @@ const EditModal = ({ cardId, open, setOpen }: Props) => {
   ];
 
   return (
-    <ModalShell open={open} onClose={() => exitModal()}>
+    <ModalContainer open={open} onClose={() => exitModal()}>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 flex flex-col bg-white p-5 rounded-lg shadow-2xl w-80 md:w-140"
@@ -149,23 +150,9 @@ const EditModal = ({ cardId, open, setOpen }: Props) => {
             defaultValue={cardtoEdit?.notes}
           ></textarea>
         </div>
-        <div className="flex gap-3 border-t border-gray-300 pt-3 mt-3">
-          <button
-            className="border-gray-300 border p-1 w-full cursor-pointer"
-            onClick={exitModal}
-            type="button"
-          >
-            Cancel
-          </button>
-          <button
-            className="bg-accent text-white border-gray-300 border p-1 w-full cursor-pointer"
-            type="submit"
-          >
-            Save
-          </button>
-        </div>
+        <FormButton successActionName="Save" onClose={exitModal} />
       </form>
-    </ModalShell>
+    </ModalContainer>
   );
 };
 

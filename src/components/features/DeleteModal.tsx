@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import useData from "../../hooks/useData";
-import ModalShell from "./ModalShell";
-
+import ModalContainer from "./ModalContainer";
 interface Props {
   cardId: string;
   open: boolean;
@@ -26,7 +25,7 @@ const DeleteModal = ({ cardId, open, setOpen }: Props) => {
   }
 
   return (
-    <ModalShell open={open} onClose={() => exitModal()}>
+    <ModalContainer open={open} onClose={() => exitModal()}>
       <div className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 flex flex-col bg-white p-5 rounded-lg shadow-2xl w-80 md:w-90">
         <h2 className="text-lg md:text-2xl font-semibold mb-1.5">
           Delete Application
@@ -51,7 +50,7 @@ const DeleteModal = ({ cardId, open, setOpen }: Props) => {
           </button>
         </div>
       </div>
-    </ModalShell>
+    </ModalContainer>
   );
 };
 

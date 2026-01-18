@@ -7,7 +7,7 @@ interface Props {
   onClose: () => void;
   children: React.ReactNode;
 }
-const ModalShell = ({ open, onClose, children }: Props) => {
+const ModalContainer = ({ open, onClose, children }: Props) => {
   usePreventScroll(open);
   useEscapeKey(onClose);
   if (!open) return null;
@@ -20,4 +20,4 @@ const ModalShell = ({ open, onClose, children }: Props) => {
   );
 };
 
-export default ModalShell;
+export default ModalContainer;

@@ -5,8 +5,8 @@ import { z } from "zod";
 import close from "../../assets/icons/menu-close.svg";
 import useAddModal from "../../hooks/useAddModal";
 import useData from "../../hooks/useData";
+import ModalContainer from "./ModalContainer";
 import Input from "../Input";
-import ModalShell from "./ModalShell";
 
 // form validations
 
@@ -64,7 +64,7 @@ const AddModal = () => {
   ];
 
   return (
-    <ModalShell open={modalOpen} onClose={() => exitModal()}>
+    <ModalContainer open={modalOpen} onClose={() => exitModal()}>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 flex flex-col bg-white p-5 rounded-lg shadow-2xl w-80 md:w-140"
@@ -141,7 +141,7 @@ const AddModal = () => {
           </button>
         </div>
       </form>
-    </ModalShell>
+    </ModalContainer>
   );
 };
 
