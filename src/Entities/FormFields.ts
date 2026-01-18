@@ -6,5 +6,4 @@ export default interface FormFields {
   key: keyof FormDataShape;
   type: string;
   error?: FieldError;
-  value?: string;
 }
