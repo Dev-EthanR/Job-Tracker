@@ -11,6 +11,7 @@ import NavBar from "./components/features/NavBar";
 import NotFound from "./components/features/NotFound";
 import type Data from "./Entities/Data";
 import type ColumnDetails from "./Entities/ColumnDetails";
+import { DndContext, type DragEndEvent } from "@dnd-kit/core";
 interface DataType {
   data: Data[];
   setData: Dispatch<SetStateAction<Data[]>>;
@@ -36,6 +37,21 @@ function App() {
     { id: "rejected", title: "Rejected", color: "bg-rejected" },
   ];
 
+  function handleDragEnd(event: DragEndEvent) {
+    const { active, over } = event;
+
+    if (!over) return;
+
+    const cardId = active.id as string;
+    const columnTitle = over.id as string;
+
+    setData((prev) =>
+      prev.map((card) =>
+        card.id === cardId ? { ...card, label: columnTitle } : card,
+      ),
+    );
+  }
+
   return (
     <DataCtx.Provider value={{ data, setData }}>
       <div className="font-inter min-h-dvh w-full flex flex-col md:flex-row">
@@ -50,13 +66,15 @@ function App() {
                 type="main"
               />
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 px-4 gap-y-4 pb-25 md:pb-0 ">
-                {columns.map((column) =>
-                  selectedValue === column.id || selectedValue === "all" ? (
-                    <Columns key={column.id} column={column} data={data} />
-                  ) : null,
-                )}
-              </div>
+              <DndContext onDragEnd={handleDragEnd}>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 px-4 gap-y-4 pb-25 md:pb-0 ">
+                  {columns.map((column) =>
+                    selectedValue === column.id || selectedValue === "all" ? (
+                      <Columns key={column.id} column={column} data={data} />
+                    ) : null,
+                  )}
+                </div>
+              </DndContext>
             )}
           </section>
         </main>

@@ -1,9 +1,10 @@
+import { useDroppable } from "@dnd-kit/core";
 import { useState } from "react";
+import type ColumnDetails from "../../Entities/ColumnDetails";
 import type Data from "../../Entities/Data";
 import icon from "../../assets/icons/dropdown.svg";
 import Card from "../ui/Card";
 import NotFound from "./NotFound";
-import type ColumnDetails from "../../Entities/ColumnDetails";
 
 interface Props {
   column: ColumnDetails;
@@ -14,7 +15,7 @@ const Columns = ({ column, data }: Props) => {
   const [toggleItems, setToggleItems] = useState<boolean>(true);
 
   const filteredData = data.filter((item) => item.label === column.title);
-
+  const { setNodeRef } = useDroppable({ id: column.title });
   return (
     <article className="flex flex-col gap-4 max-w-80 xl:max-w-120 w-full">
       <button
@@ -32,18 +33,21 @@ const Columns = ({ column, data }: Props) => {
         />
       </button>
 
-      {toggleItems &&
-        (filteredData.length <= 0 ? (
-          <NotFound
-            heading="No applications here yet"
-            subtext="Add one or drag a card here"
-            type="column"
-          />
-        ) : (
-          filteredData.map((card) => (
-            <Card key={card.id} cardData={{ ...card }} color={column.color} />
-          ))
-        ))}
+      {toggleItems && (
+        <div ref={setNodeRef} className="flex flex-col gap-4">
+          {filteredData.length <= 0 ? (
+            <NotFound
+              heading="No applications here yet"
+              subtext="Add one or drag a card here"
+              type="column"
+            />
+          ) : (
+            filteredData.map((card) => (
+              <Card key={card.id} cardData={{ ...card }} color={column.color} />
+            ))
+          )}
+        </div>
+      )}
     </article>
   );
 };
