@@ -25,7 +25,7 @@ const Header = ({ value, setValue }: Props) => {
   return (
     <AddModalCtx.Provider value={{ modalOpen, setModalOpen }}>
       <header
-        className={`w-full flex justify-between items-start p-4 px-8 ${theme === "dark" ? "bg-dark-primary brightness-120 text-dark-text" : "bg-primary text-text"} `}
+        className={`w-full flex justify-between items-start p-4 px-8 ${theme === "dark" ? "bg-[#2f3c54] text-dark-text" : "bg-primary text-text"} `}
       >
         <div className={`flex`}>
           <input type="text" placeholder="Search..." />
@@ -46,7 +46,7 @@ const Header = ({ value, setValue }: Props) => {
           </select>
         </div>
         <button
-          className="fixed top-120 left-1/2 -translate-x-1/2 z-10 rounded-full  md:static  md:translate-x-0 md:rounded-lg flex items-center justify-center w-60 py-3 text-xl font-medium bg-accent text-white hover:brightness-115 cursor-pointer select-none"
+          className="fixed bottom-5 left-1/2 -translate-x-1/2 z-10 rounded-full  md:static  md:translate-x-0 md:rounded-lg flex items-center justify-center w-60 py-3 text-xl font-medium bg-accent text-white hover:brightness-115 cursor-pointer select-none"
           onClick={() => setModalOpen(true)}
         >
           <img className="w-8 filter brightness-0 invert" src={plus} alt="" />
