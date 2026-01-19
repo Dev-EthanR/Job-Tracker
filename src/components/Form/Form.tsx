@@ -62,7 +62,7 @@ const Form = ({
     <ModalContainer open={open} onClose={() => exit()}>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className={`absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 flex flex-col  p-5 rounded-lg shadow-2xl w-80 md:w-140 ${theme === "dark" ? "bg-dark-primary" : "bg-primary"}`}
+        className={`absolute left-1/2 top-1/20 z-20 -translate-x-1/2 translate-y-1/20 md:top-1/2 md:translate-y-1/2 flex flex-col  p-5 rounded-lg shadow-2xl w-80 md:w-140 ${theme === "dark" ? "bg-dark-primary" : "bg-primary"}`}
       >
         <FormHeader title={title} onClose={exit} />
         {fields.map((input) => (
