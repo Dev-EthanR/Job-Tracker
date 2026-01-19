@@ -1,4 +1,5 @@
 import notFoundImage from "../../assets/images/not-found.png";
+import useTheme from "../../hooks/useTheme";
 
 type Missing = "column" | "main";
 
@@ -9,6 +10,8 @@ interface Props {
 }
 
 const NotFound = ({ heading, subtext, type }: Props) => {
+  const { theme } = useTheme();
+
   return (
     <div className="flex flex-col items-center justify-center h-full text-center">
       <img
@@ -22,7 +25,7 @@ const NotFound = ({ heading, subtext, type }: Props) => {
         {heading}
       </h1>
       <p
-        className={`text-gray-600 w-60 md:w-full md:text-base ${type === "main" && "md:text-lg"}`}
+        className={`${theme === "dark" ? "text-dark-subtext" : "text-subtext"} w-60 md:w-full md:text-base ${type === "main" && "md:text-lg"}`}
       >
         {subtext}
       </p>

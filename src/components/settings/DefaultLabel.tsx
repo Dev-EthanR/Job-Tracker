@@ -30,7 +30,6 @@ const DefaultLabel = () => {
         </option>
         <LabelOptions />
       </select>
-      <div>{selectedValue}</div>
     </>
   );
 };

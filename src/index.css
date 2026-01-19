@@ -16,15 +16,10 @@
   --color-rejected: #f0dde4;
   --color-sucess: #359171;
   --color-error: #d36f6f;
-}
-
-@layer theme {
-  .dark {
-    --color-primary: #273246;
-    --color-secondary: #293655;
-    --color-text: #c4cede;
-    --color-subtext: #b4b7bd;
-  }
+  --color-dark-primary: #273246;
+  --color-dark-secondary: #293655;
+  --color-dark-text: #cad2de;
+  --color-dark-subtext: #cdced1;
 }
 
 @layer components {

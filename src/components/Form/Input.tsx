@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { type UseFormRegister, type UseFormSetFocus } from "react-hook-form";
 import type FormFields from "../../Entities/FormFields";
 import { type FormDataShape } from "../../utilities/schema";
+import useTheme from "../../hooks/useTheme";
 
 export type FormType = "add" | "edit";
 
@@ -13,6 +14,8 @@ interface Props {
 }
 
 const Input = ({ input, register, formType, setFocus }: Props) => {
+  const { theme } = useTheme();
+
   useEffect(() => {
     setFocus("company");
   }, [setFocus]);
@@ -29,7 +32,7 @@ const Input = ({ input, register, formType, setFocus }: Props) => {
         )}
       </label>
       <input
-        className="border-gray-300 border rounded-md mt-1 mb-3 h-8 w-full p-4 focus:outline-gray-400"
+        className={`${theme === "dark" ? "border-gray-700 focus:outline-gray-800" : "border-gray-300 focus:outline-gray-400"} border rounded-md mt-1 mb-3 h-8 w-full p-4 `}
         id={input.key}
         type={input.type}
         aria-required

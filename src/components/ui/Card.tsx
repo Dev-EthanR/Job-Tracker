@@ -7,6 +7,7 @@ import CardButton from "./Card/CardButton";
 import CardFooter from "./Card/CardFooter";
 import CardHeader from "./Card/CardHeader";
 import useData from "../../hooks/useData";
+import useTheme from "../../hooks/useTheme";
 
 interface Props {
   cardData: Data;
@@ -17,6 +18,7 @@ const Card = ({ cardData, color }: Props) => {
   const [editModalOpen, setEditModalOpen] = useState<boolean>(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
   const { setData } = useData();
+  const { theme } = useTheme();
 
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: cardData.id,
@@ -28,7 +30,7 @@ const Card = ({ cardData, color }: Props) => {
   return (
     <>
       <div
-        className={`relative bg-white rounded-lg shadow-md shadow-gray-300 py-4 px-3 h-fit mx-auto w-70  md:w-50 max-w-80 xl:w-full xl:max-w-110 ${transform ? "cursor-grabbing" : "cursor-grab"}`}
+        className={`relative ${theme === "dark" ? "bg-dark-primary shadow-gray-950" : "bg-primary shadow-gray-300"} rounded-lg shadow-md  py-4 px-3 h-fit mx-auto w-70  md:w-50 max-w-80 xl:w-full xl:max-w-110 ${transform ? "cursor-grabbing" : "cursor-grab"}`}
         ref={setNodeRef}
         {...listeners}
         {...attributes}
@@ -60,7 +62,7 @@ const Card = ({ cardData, color }: Props) => {
           />
         </div>
         {transform && (
-          <div className="h-full w-10 bg-blue-200 absolute rounded-r-lg top-0 right-0"></div>
+          <div className="h-full w-10 bg-blue-950 absolute rounded-r-lg top-0 right-0"></div>
         )}
       </div>
 

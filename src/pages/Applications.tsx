@@ -5,10 +5,12 @@ import Header from "../components/features/Header";
 import NotFound from "../components/features/NotFound";
 import type ColumnDetails from "../Entities/ColumnDetails";
 import useData from "../hooks/useData";
+import useTheme from "../hooks/useTheme";
 
 const Applications = () => {
   const [selectedValue, setSelectedValue] = useState<string>("all");
   const { data, setData } = useData();
+  const { theme } = useTheme();
 
   const columns: ColumnDetails[] = [
     { id: "applied", title: "Applied", color: "bg-applied" },
@@ -31,10 +33,15 @@ const Applications = () => {
       ),
     );
   }
+
   return (
-    <main className="flex flex-col flex-1 ">
+    <main
+      className={`${theme === "dark" && "bg-dark-primary text-dark-text"} flex flex-col flex-1 `}
+    >
       <Header value={selectedValue} setValue={setSelectedValue} />
-      <section className="flex-1 bg-primary pt-12 flex justify-center md:block">
+      <section
+        className={`flex-1 ${theme === "dark" ? "bg-dark-primary text-dark-text" : "bg-primary text-text"} pt-12 flex justify-center md:block`}
+      >
         {data.length <= 0 ? (
           <NotFound
             heading="No applications yet"

@@ -14,7 +14,7 @@ const ClearData = () => {
   return (
     <>
       <button
-        className="border border-gray-400 px-4 cursor-pointer rounded-md hover:border-green-800"
+        className="border border-gray-400 px-4 cursor-pointer rounded-md"
         onClick={() => setConfirmationModal(true)}
       >
         Clear Data

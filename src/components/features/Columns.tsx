@@ -23,7 +23,7 @@ const Columns = ({ column, data }: Props) => {
         aria-label="toggle columns"
         onClick={() => setToggleItems((prev) => !prev)}
       >
-        <h2 className="ml-auto pl-5">
+        <h2 className="ml-auto pl-5 text-text">
           {column.title} ({filteredData.length})
         </h2>
         <img

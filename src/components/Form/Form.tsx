@@ -9,6 +9,7 @@ import type { FormType } from "./Input";
 import LabelOptions from "./LabelOptions";
 import FormButton from "./FormButton";
 import type FormFields from "../../Entities/FormFields";
+import useTheme from "../../hooks/useTheme";
 
 interface Props {
   id: FormType;
@@ -40,6 +41,7 @@ const Form = ({
     resolver: zodResolver(schema),
     defaultValues,
   });
+  const { theme } = useTheme();
 
   useEffect(() => {
     reset(defaultValues);
@@ -60,7 +62,7 @@ const Form = ({
     <ModalContainer open={open} onClose={() => exit()}>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 flex flex-col bg-white p-5 rounded-lg shadow-2xl w-80 md:w-140"
+        className={`absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 flex flex-col  p-5 rounded-lg shadow-2xl w-80 md:w-140 ${theme === "dark" ? "bg-dark-primary" : "bg-primary"}`}
       >
         <FormHeader title={title} onClose={exit} />
         {fields.map((input) => (
@@ -84,7 +86,7 @@ const Form = ({
         <select
           id="label"
           {...register("label")}
-          className="block w-full border-gray-300 border rounded-md mt-1 mb-3 h-10 px-4 mr-4 focus:outline-gray-400"
+          className={`block w-full  border rounded-md mt-1 mb-3 h-10 px-4 mr-4 ${theme === "dark" ? "border-gray-600 focus:outline-gray-600 " : "border-gray-300 focus:outline-gray-400"} `}
         >
           <LabelOptions />
         </select>
@@ -92,7 +94,7 @@ const Form = ({
         <textarea
           id="notes"
           {...register("notes")}
-          className="block w-full border-gray-300 border rounded-md mt-1 mb-3 h-20 p-4 focus:outline-gray-400"
+          className={`block w-full  border rounded-md mt-1 mb-3 h-20 p-4 ${theme === "dark" ? "border-gray-600 focus:outline-gray-600" : "border-gray-300 focus:outline-gray-400"} `}
         />
 
         <FormButton successActionName={submitLabel} onClose={exit} />
