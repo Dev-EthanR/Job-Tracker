@@ -24,10 +24,10 @@ const Header = ({ value, setValue }: Props) => {
   };
   return (
     <AddModalCtx.Provider value={{ modalOpen, setModalOpen }}>
-      <header className="w-full flex justify-between items-start p-4 px-8">
-        <div
-          className={`flex ${theme === "dark" ? "bg-dark-primary text-dark-text" : "bg-primary text-text"} `}
-        >
+      <header
+        className={`w-full flex justify-between items-start p-4 px-8 ${theme === "dark" ? "bg-dark-primary brightness-120 text-dark-text" : "bg-primary text-text"} `}
+      >
+        <div className={`flex `}>
           <input type="text" placeholder="Search..." />
           <select
             onChange={handleSelectChange}
