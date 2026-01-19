@@ -16,11 +16,7 @@ const Card = ({ cardData, color }: Props) => {
   const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
 
   return (
-    <div
-      className="bg-white rounded-lg shadow-md shadow-gray-300 py-4 px-3 h-fit mx-auto w-70  md:w-50 max-w-80 xl:w-full xl:max-w-110"
-      draggable
-      onDragStart={(e) => e.dataTransfer.setData("id", cardData.id)}
-    >
+    <div className="bg-white rounded-lg shadow-md shadow-gray-300 py-4 px-3 h-fit mx-auto w-70  md:w-50 max-w-80 xl:w-full xl:max-w-110">
       <div className="flex justify-between items-start  mb-2 relative">
         <CardHeader title={cardData.company} subTitle={cardData.position} />
         <CardButton
