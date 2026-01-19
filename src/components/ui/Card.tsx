@@ -6,6 +6,7 @@ import EditModal from "../features/EditModal";
 import CardButton from "./Card/CardButton";
 import CardFooter from "./Card/CardFooter";
 import CardHeader from "./Card/CardHeader";
+import useData from "../../hooks/useData";
 
 interface Props {
   cardData: Data;
@@ -15,6 +16,7 @@ interface Props {
 const Card = ({ cardData, color }: Props) => {
   const [editModalOpen, setEditModalOpen] = useState<boolean>(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
+  const { setData } = useData();
 
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: cardData.id,
@@ -60,8 +62,14 @@ const Card = ({ cardData, color }: Props) => {
       <DeleteModal
         open={deleteModalOpen}
         setOpen={setDeleteModalOpen}
-        cardId={cardData.id}
-      />
+        deleteAction={() =>
+          setData((prevData) => prevData.filter((d) => d.id != cardData.id))
+        }
+        heading="Delete Application"
+      >
+        Are you sure you want to delete the application? <br /> This action
+        cannot be undone
+      </DeleteModal>
       <EditModal
         open={editModalOpen}
         setOpen={setEditModalOpen}
