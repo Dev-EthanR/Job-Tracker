@@ -30,6 +30,11 @@ const DeleteModal = ({
     setOpen(false);
   }
 
+  function onDelete() {
+    if (deleteAction) deleteAction();
+    exitModal();
+  }
+
   return (
     <ModalContainer open={open} onClose={() => exitModal()}>
       <div
@@ -52,7 +57,7 @@ const DeleteModal = ({
           <button
             ref={buttonRef}
             className={`bg-red-600 text-white border-gray-300 ${theme === "dark" ? "border-gray-950" : "border-gray-300"} w-30 rounded-lg border p-1  cursor-pointer`}
-            onClick={deleteAction}
+            onClick={onDelete}
           >
             Delete
           </button>
