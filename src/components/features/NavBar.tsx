@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import menuClose from "../../assets/icons/menu-close.svg";
 import menuOpen from "../../assets/icons/menu-open.svg";
 import { useState, type JSX } from "react";
@@ -12,8 +13,12 @@ const NavBar = ({ title }: Props) => {
   const navigations = (): JSX.Element => {
     return (
       <nav className={`flex gap-2 flex-col`}>
-        <a href="#">My Applications</a>
-        <a href="#">Settings</a>
+        <NavLink to="." end>
+          My Applications
+        </NavLink>
+        <NavLink to="settings" end>
+          Settings
+        </NavLink>
       </nav>
     );
   };

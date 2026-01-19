@@ -1,4 +1,3 @@
-import { DndContext, type DragEndEvent } from "@dnd-kit/core";
 import {
   createContext,
   useEffect,
@@ -6,12 +5,14 @@ import {
   type Dispatch,
   type SetStateAction,
 } from "react";
-import Columns from "./components/features/Columns";
-import Header from "./components/features/Header";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./components/features/NavBar";
-import NotFound from "./components/features/NotFound";
-import type ColumnDetails from "./Entities/ColumnDetails";
 import type Data from "./Entities/Data";
+import Applications from "./pages/Applications";
+import Layout from "./pages/Layout";
+import Settings from "./pages/Settings";
+import Page404 from "./pages/Page404";
+
 interface DataType {
   data: Data[];
   setData: Dispatch<SetStateAction<Data[]>>;
@@ -24,62 +25,23 @@ function App() {
     const storedData: string | null = localStorage.getItem("jobData");
     return storedData ? JSON.parse(storedData) : [];
   });
-  const [selectedValue, setSelectedValue] = useState<string>("all");
 
   useEffect(() => {
     localStorage.setItem("jobData", JSON.stringify(data));
   }, [data]);
 
-  const columns: ColumnDetails[] = [
-    { id: "applied", title: "Applied", color: "bg-applied" },
-    { id: "interview", title: "Interview", color: "bg-interview" },
-    { id: "offer", title: "Offer", color: "bg-offer" },
-    { id: "rejected", title: "Rejected", color: "bg-rejected" },
-  ];
-
-  function handleDragEnd(event: DragEndEvent) {
-    const { active, over } = event;
-
-    if (!over) return;
-
-    const cardId = active.id as string;
-    const columnTitle = over.id as string;
-
-    setData((prev) =>
-      prev.map((card) =>
-        card.id === cardId ? { ...card, label: columnTitle } : card,
-      ),
-    );
-  }
-
   return (
-    <DataCtx.Provider value={{ data, setData }}>
-      <div className="font-inter min-h-dvh w-full flex flex-col md:flex-row">
-        <NavBar title="My Applications " />
-        <main className="flex flex-col flex-1 ">
-          <Header value={selectedValue} setValue={setSelectedValue} />
-          <section className="flex-1 bg-primary pt-12 flex justify-center md:block">
-            {data.length <= 0 ? (
-              <NotFound
-                heading="No applications yet"
-                subtext="et started by adding your first job application"
-                type="main"
-              />
-            ) : (
-              <DndContext onDragEnd={handleDragEnd}>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 px-4 gap-y-4 pb-25 md:pb-0 ">
-                  {columns.map((column) =>
-                    selectedValue === column.id || selectedValue === "all" ? (
-                      <Columns key={column.id} column={column} data={data} />
-                    ) : null,
-                  )}
-                </div>
-              </DndContext>
-            )}
-          </section>
-        </main>
-      </div>
-    </DataCtx.Provider>
+    <BrowserRouter>
+      <DataCtx.Provider value={{ data, setData }}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Applications />} />
+            <Route path="settings" element={<Settings />} />
+            <Route path="*" element={<Page404 />} />
+          </Route>
+        </Routes>
+      </DataCtx.Provider>
+    </BrowserRouter>
   );
 }
 

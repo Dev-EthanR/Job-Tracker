@@ -26,3 +26,10 @@
     --color-subtext: #b4b7bd;
   }
 }
+
+@layer components {
+  .active {
+    color: #3d7dd7;
+    font-weight: 700;
+  }
+}
