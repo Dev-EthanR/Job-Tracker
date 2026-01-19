@@ -13,10 +13,12 @@ const Settings = () => {
     >
       <h1 className="text-4xl font-semibold">Settings</h1>
       <div className="border-b border-gray-300 w-full mb-4 pt-4"></div>
-      <ClearData />
-      <DefaultLabel />
-      <DeleteConfirmation />
-      <Theme />
+      <main className="flex flex-col gap-6">
+        <ClearData />
+        <DefaultLabel />
+        <DeleteConfirmation />
+        <Theme />
+      </main>
     </div>
   );
 };

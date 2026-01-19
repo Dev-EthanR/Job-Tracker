@@ -1,4 +1,5 @@
 import { useEffect, useState, type ChangeEvent } from "react";
+import Container from "./Container";
 
 const DeleteConfirmation = () => {
   const [isChecked, setIsChecked] = useState<boolean>(() => {
@@ -14,17 +15,19 @@ const DeleteConfirmation = () => {
     localStorage.setItem("deleteConfirmation", JSON.stringify(isChecked));
   }, [isChecked]);
   return (
-    <div>
-      <input
-        id="confirmation"
-        type="checkbox"
-        checked={isChecked}
-        onChange={handleCheckboxChange}
-      />
-      <label className="ml-2" htmlFor="confirmation">
-        Delete Confirmation
-      </label>
-    </div>
+    <Container>
+      <div className="flex items-center  mr-auto gap-3">
+        <h2 className="whitespace-nowrap">Delete Confirmation</h2>
+
+        <input
+          id="confirmation"
+          type="checkbox"
+          checked={isChecked}
+          onChange={handleCheckboxChange}
+          aria-label="Delete Confirmation"
+        />
+      </div>
+    </Container>
   );
 };
 
