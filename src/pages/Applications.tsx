@@ -45,7 +45,7 @@ const Applications = () => {
         {data.length <= 0 ? (
           <NotFound
             heading="No applications yet"
-            subtext="et started by adding your first job application"
+            subtext="Get started by adding your first job application"
             type="main"
           />
         ) : (
