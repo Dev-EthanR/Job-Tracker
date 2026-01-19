@@ -62,7 +62,9 @@ const Card = ({ cardData, color }: Props) => {
           />
         </div>
         {transform && (
-          <div className="h-full w-10 bg-blue-950 absolute rounded-r-lg top-0 right-0"></div>
+          <div
+            className={`h-full w-10 ${theme === "dark" ? "bg-blue-950" : "bg-blue-200"}  absolute rounded-r-lg top-0 right-0`}
+          ></div>
         )}
       </div>
 
