@@ -26,7 +26,7 @@ const Card = ({ cardData, color }: Props) => {
   return (
     <>
       <div
-        className="bg-white rounded-lg shadow-md shadow-gray-300 py-4 px-3 h-fit mx-auto w-70  md:w-50 max-w-80 xl:w-full xl:max-w-110 cursor-grab"
+        className={`relative bg-white rounded-lg shadow-md shadow-gray-300 py-4 px-3 h-fit mx-auto w-70  md:w-50 max-w-80 xl:w-full xl:max-w-110 ${transform ? "cursor-grabbing" : "cursor-grab"}`}
         ref={setNodeRef}
         {...listeners}
         {...attributes}
@@ -52,7 +52,11 @@ const Card = ({ cardData, color }: Props) => {
             date={cardData.date}
           />
         </div>
+        {transform && (
+          <div className="h-full w-10 bg-blue-200 absolute rounded-r-lg top-0 right-0"></div>
+        )}
       </div>
+
       <DeleteModal
         open={deleteModalOpen}
         setOpen={setDeleteModalOpen}

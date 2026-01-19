@@ -1,3 +1,4 @@
+import { DndContext, type DragEndEvent } from "@dnd-kit/core";
 import {
   createContext,
   useEffect,
@@ -9,9 +10,8 @@ import Columns from "./components/features/Columns";
 import Header from "./components/features/Header";
 import NavBar from "./components/features/NavBar";
 import NotFound from "./components/features/NotFound";
-import type Data from "./Entities/Data";
 import type ColumnDetails from "./Entities/ColumnDetails";
-import { DndContext, type DragEndEvent } from "@dnd-kit/core";
+import type Data from "./Entities/Data";
 interface DataType {
   data: Data[];
   setData: Dispatch<SetStateAction<Data[]>>;
