@@ -9,13 +9,15 @@ const AddModal = () => {
 
   if (!modalOpen) return null;
 
+  const defaultLabel = localStorage.getItem("defaultLabel");
+
   return (
     <Form
       id="add"
       open={modalOpen}
       title="Add Application"
       submitLabel="Apply"
-      defaultValues={{ label: "" }}
+      defaultValues={{ label: defaultLabel || "" }}
       onClose={() => setModalOpen(false)}
       onSubmit={(data) => {
         setData((prev) => [{ id: uuidv4(), ...data }, ...prev]);
