@@ -1,5 +1,6 @@
 import ClearData from "../components/settings/ClearData";
 import DefaultLabel from "../components/settings/DefaultLabel";
+import DeleteConfirmation from "../components/settings/DeleteConfirmation";
 
 const Settings = () => {
   return (
@@ -8,6 +9,7 @@ const Settings = () => {
       <div className="border-b border-gray-300 w-full mb-4 pt-4"></div>
       <ClearData />
       <DefaultLabel />
+      <DeleteConfirmation />
     </div>
   );
 };

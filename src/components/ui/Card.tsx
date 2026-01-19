@@ -44,6 +44,11 @@ const Card = ({ cardData, color }: Props) => {
             <CardButton
               setEditModal={setEditModalOpen}
               setDeleteModal={setDeleteModalOpen}
+              deleteAction={() =>
+                setData((prevData) =>
+                  prevData.filter((d) => d.id != cardData.id),
+                )
+              }
             />
           </div>
         </div>

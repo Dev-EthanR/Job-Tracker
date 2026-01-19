@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ChangeEvent } from "react";
 import LabelOptions from "../Form/LabelOptions";
 
 const DefaultLabel = () => {
@@ -6,7 +6,7 @@ const DefaultLabel = () => {
     localStorage.getItem("defaultLabel") || "",
   );
 
-  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setSelectedValue(event.target.value);
   };
 

@@ -6,14 +6,26 @@ import deleteImg from "../../../assets/icons/trash.svg";
 interface Props {
   setEditModal: (toggle: boolean) => void;
   setDeleteModal: (toggle: boolean) => void;
+  deleteAction?: () => void;
 }
 
-const CardButton = ({ setEditModal, setDeleteModal }: Props) => {
+const CardButton = ({ setEditModal, setDeleteModal, deleteAction }: Props) => {
   const [optionsOpened, setOpionsOpened] = useState<boolean>(false);
 
   function modalOption(setModal: (option: boolean) => void): void {
     setOpionsOpened(false);
     setModal(true);
+  }
+
+  function handleDelete() {
+    const deleteConfirmation = localStorage.getItem("deleteConfirmation");
+    const confirmDelete = deleteConfirmation && JSON.parse(deleteConfirmation);
+
+    if (confirmDelete) {
+      modalOption(setDeleteModal);
+    } else {
+      if (deleteAction) deleteAction();
+    }
   }
   return (
     <>
@@ -38,7 +50,7 @@ const CardButton = ({ setEditModal, setDeleteModal }: Props) => {
           </button>
           <button
             className="hover:bg-gray-200 w-full rounded-sm text-left cursor-pointer flex items-center gap-2 "
-            onClick={() => modalOption(setDeleteModal)}
+            onClick={handleDelete}
           >
             <img className="w-5 " src={deleteImg} alt="" />
             Delete
