@@ -12,6 +12,7 @@ import Applications from "./pages/Applications";
 import Layout from "./pages/Layout";
 import Page404 from "./pages/Page404";
 import Settings from "./pages/Settings";
+import CardDetails from "./pages/CardDetails";
 
 interface DataType {
   data: Data[];
@@ -55,6 +56,8 @@ function App() {
               <Route index element={<Applications />} />
               <Route path="settings" element={<Settings />} />
               <Route path="analytics" element={<Analytics />} />
+              <Route path="card/:id" element={<CardDetails />} />
+
               <Route path="*" element={<Page404 />} />
             </Route>
           </Routes>

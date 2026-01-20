@@ -37,7 +37,7 @@ const Card = ({ cardData, color }: Props) => {
         style={style}
       >
         <div className="flex justify-between items-start  mb-2 relative">
-          <CardHeader title={cardData.company} subTitle={cardData.position} />
+          <CardHeader cardData={{ ...cardData }} />
           <div
             onPointerDown={(e) => e.stopPropagation()}
             onMouseDown={(e) => e.stopPropagation()}

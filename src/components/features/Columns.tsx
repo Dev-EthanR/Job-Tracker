@@ -23,7 +23,7 @@ const Columns = ({ column, data }: Props) => {
         aria-label="toggle columns"
         onClick={() => setToggleItems((prev) => !prev)}
       >
-        <h2 className="ml-auto pl-5 text-text">{column.title}</h2>
+        <h2 className="ml-auto pl-5 text-white">{column.title}</h2>
         <img
           className={`max-w-10 ml-auto transition-transform duration-300 ${toggleItems ? "rotate-0" : "rotate-90"}`}
           src={icon}

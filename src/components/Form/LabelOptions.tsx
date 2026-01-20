@@ -1,16 +1,16 @@
 const LabelOptions = () => {
   return (
     <>
-      <option className="bg-applied text-text" value="Applied">
+      <option className="bg-applied text-white" value="Applied">
         Applied
       </option>
-      <option className="bg-interview text-text" value="Interview">
+      <option className="bg-interview text-white" value="Interview">
         Interview
       </option>
-      <option className="bg-offer text-text" value="Offer">
+      <option className="bg-offer text-white" value="Offer">
         Offer
       </option>
-      <option className="bg-rejected text-text" value="Rejected">
+      <option className="bg-rejected text-white" value="Rejected">
         Reject
       </option>
     </>
