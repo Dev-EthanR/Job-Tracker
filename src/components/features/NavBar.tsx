@@ -18,9 +18,8 @@ const NavBar = ({ title }: Props) => {
         <NavLink to="." end>
           My Applications
         </NavLink>
-        <NavLink to="settings" end>
-          Settings
-        </NavLink>
+        <NavLink to="settings">Settings</NavLink>
+        <NavLink to="analytics">Analytics</NavLink>
       </nav>
     );
   };

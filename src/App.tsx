@@ -11,6 +11,8 @@ import Applications from "./pages/Applications";
 import Layout from "./pages/Layout";
 import Page404 from "./pages/Page404";
 import Settings from "./pages/Settings";
+import Analytics from "./pages/Analytics";
+import { mockApplications } from "./data";
 
 interface DataType {
   data: Data[];
@@ -53,6 +55,7 @@ function App() {
             <Route path="/" element={<Layout />}>
               <Route index element={<Applications />} />
               <Route path="settings" element={<Settings />} />
+              <Route path="analytics" element={<Analytics />} />
               <Route path="*" element={<Page404 />} />
             </Route>
           </Routes>
