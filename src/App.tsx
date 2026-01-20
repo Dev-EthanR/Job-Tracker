@@ -7,12 +7,11 @@ import {
 } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import type Data from "./Entities/Data";
+import Analytics from "./pages/Analytics";
 import Applications from "./pages/Applications";
 import Layout from "./pages/Layout";
 import Page404 from "./pages/Page404";
 import Settings from "./pages/Settings";
-import Analytics from "./pages/Analytics";
-import { mockApplications } from "./data";
 
 interface DataType {
   data: Data[];
