@@ -28,7 +28,7 @@ const BarGraph = () => {
   function dataLength(label: string): number {
     return data.filter((d) => d.label === label).length;
   }
-  const labels = [...new Set(data.map((d) => d.label))];
+  const labels = ["Applied", "Interview", "Offer", "Rejected"];
   const newData = [
     dataLength("Applied"),
     dataLength("Interview"),
@@ -96,22 +96,12 @@ const BarGraph = () => {
       {
         label: "Applications by status",
         data: newData,
-        backgroundColor: function (context: any) {
-          const index = context.dataIndex;
-          const label = context.chart.data.labels[index];
-          switch (label) {
-            case "Applied":
-              return "rgba(93, 93, 227, 1)";
-            case "Interview":
-              return " rgba(222, 138, 44, 1)";
-            case "Offer":
-              return "rgba(71, 197, 222, 1)";
-            case "Rejected":
-              return "rgba(222, 24, 67, 1)";
-            default:
-              return "rgba(100, 100, 100, 0.6)";
-          }
-        },
+        backgroundColor: [
+          "rgba(93, 93, 227, 1)",
+          "rgba(222, 138, 44, 1)",
+          "rgba(71, 197, 222, 1)",
+          "rgba(222, 24, 67, 1)",
+        ],
       },
     ],
   };
