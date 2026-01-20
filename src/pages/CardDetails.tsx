@@ -11,7 +11,7 @@ const CardDetails = () => {
     >
       <Link
         to="/"
-        className=" rounded-lg flex items-center justify-center w-30 py-3 text-xl font-medium bg-accent text-white hover:brightness-115 cursor-pointer select-none"
+        className=" rounded-lg flex items-center justify-center w-30 py-3 text-xl font-medium bg-accent text-white hover:brightness-115 cursor-pointer select-none mb-6"
       >
         Go Back
       </Link>

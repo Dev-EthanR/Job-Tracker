@@ -96,12 +96,22 @@ const BarGraph = () => {
       {
         label: "Applications by status",
         data: newData,
-        backgroundColor: [
-          "rgba(230, 230, 239, 1)",
-          "rgba(220, 235, 238, 1)",
-          "rgba(245, 236, 226, 1)",
-          "rgba(240, 221, 228, 1)",
-        ],
+        backgroundColor: function (context: any) {
+          const index = context.dataIndex;
+          const label = context.chart.data.labels[index];
+          switch (label) {
+            case "Applied":
+              return "rgba(93, 93, 227, 1)";
+            case "Interview":
+              return " rgba(222, 138, 44, 1)";
+            case "Offer":
+              return "rgba(71, 197, 222, 1)";
+            case "Rejected":
+              return "rgba(222, 24, 67, 1)";
+            default:
+              return "rgba(100, 100, 100, 0.6)";
+          }
+        },
       },
     ],
   };
