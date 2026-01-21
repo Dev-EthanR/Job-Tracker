@@ -25,7 +25,10 @@ const Card = ({ cardData, color }: Props) => {
   });
 
   const style = transform
-    ? { transform: `translate(${transform.x}px, ${transform.y}px)` }
+    ? {
+        transform: `translate(${transform.x}px, ${transform.y}px)`,
+        zIndex: "100",
+      }
     : undefined;
 
   return (
