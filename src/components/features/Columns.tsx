@@ -1,11 +1,11 @@
 import { useDroppable } from "@dnd-kit/core";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useState } from "react";
 import type ColumnDetails from "../../Entities/ColumnDetails";
 import type Data from "../../Entities/Data";
 import icon from "../../assets/icons/dropdown.svg";
+import useAnimateHeight from "../../hooks/useAnimateHeight";
 import Card from "../ui/Card";
 import NotFound from "./NotFound";
-import useAnimateHeight from "../../hooks/useAnimateHeight";
 
 interface Props {
   column: ColumnDetails;

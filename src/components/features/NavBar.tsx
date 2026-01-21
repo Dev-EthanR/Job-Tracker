@@ -1,10 +1,10 @@
+import { useState, type JSX } from "react";
 import { NavLink } from "react-router-dom";
 import menuClose from "../../assets/icons/menu-close.svg";
 import menuOpen from "../../assets/icons/menu-open.svg";
-import { useRef, useState, type JSX } from "react";
-import useTheme from "../../hooks/useTheme";
-import usePreventScroll from "../../hooks/usePreventScroll";
 import useAnimateHeight from "../../hooks/useAnimateHeight";
+import usePreventScroll from "../../hooks/usePreventScroll";
+import useTheme from "../../hooks/useTheme";
 
 interface Props {
   title: string;
