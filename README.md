@@ -5,6 +5,9 @@ A responsive, accessible job application tracking web app that helps users manag
 
 Built as a **frontend-focused portfolio project** to demonstrate real-world UI architecture, drag-and-drop interactions, form handling, accessibility, and data visualization.
 
+## 🚀 Live Demo
+[![Live Demo](https://img.shields.io/badge/Live_Demo-View-blue?style=for-the-badge)](https://job-tracker-psi-seven.vercel.app/)
+
 ---
 
 ## ✨ Features
