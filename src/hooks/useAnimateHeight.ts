@@ -8,7 +8,7 @@ const useAnimateHeight = <T>(toggle: boolean, ...extraDependency: T[]) => {
     if (!contentRef.current) return;
 
     if (toggle) {
-      setHeight(contentRef.current.scrollHeight);
+      setHeight(contentRef.current.scrollHeight + 5);
     } else {
       setHeight(0);
     }
