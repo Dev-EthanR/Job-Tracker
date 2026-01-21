@@ -1,73 +1,167 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 📊 Job Application Tracker
 
-Currently, two official plugins are available:
+A responsive, accessible job application tracking web app that helps users manage applications across multiple stages using a Kanban-style workflow.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Built as a **frontend-focused portfolio project** to demonstrate real-world UI architecture, drag-and-drop interactions, form handling, accessibility, and data visualization.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Features
 
-## Expanding the ESLint configuration
+### 📋 Kanban Board
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* Four application stages (Applied, Interview, Offer, Rejected)
+* Drag & drop cards between columns
+* Clear visual drag indicators
+* Empty column states with helpful messaging
+* Badge counters per column
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 🧾 Application Cards
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+* Company name, role, date, and status
+* Context menu (⋯) for edit & delete actions
+* Card details page with full application info
+* Cards are removed instantly on delete (no ghost state)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### ➕ Add / Edit Applications
+
+* Modal-based form
+* Form validation with clear error states
+* Keyboard accessible modals
+* Focus trapping and ESC-to-close support
+
+### 📊 Analytics Page
+
+* Visual breakdown of applications by status
+* Charts built with Chart.js
+* Clean, readable presentation for quick insights
+
+### ⚙️ Settings Page
+
+* Frontend-only configuration
+* Structured to scale for future preferences
+
+### 🚫 404 Page
+
+* Friendly error state
+* Clear navigation back to the app
+
+---
+
+## ♿ Accessibility
+
+Accessibility was a core focus throughout the project:
+
+* Semantic HTML
+* Full keyboard navigation
+* Focus trapping for modals
+* Correct tab order and focus cycling
+* ESC key support
+* ARIA attributes where appropriate
+* Clear visual focus indicators
+
+---
+
+## 📱 Responsive Design
+
+* **Mobile:** Single-column layout
+* **Tablet:** Compact board layout
+* **Desktop:** Full 4-column Kanban board
+
+Built mobile-first and scaled up.
+
+---
+
+## 🛠️ Tech Stack
+
+### Core
+
+* **React 19**
+* **TypeScript**
+* **Vite**
+
+### Styling
+
+* **Tailwind CSS**
+
+### Drag & Drop
+
+* **@dnd-kit/core**
+
+### Forms & Validation
+
+* **react-hook-form**
+* **zod**
+* **@hookform/resolvers**
+
+### Charts & Analytics
+
+* **chart.js**
+* **react-chartjs-2**
+
+### Accessibility
+
+* **focus-trap-react**
+
+### Routing
+
+* **react-router-dom**
+
+### Utilities
+
+* **uuid**
+
+### Tooling
+
+* **ESLint**
+* **TypeScript ESLint**
+* **Vite Preview**
+
+---
+
+## 🚀 Getting Started
+
+```bash
+git clone https://github.com/your-username/job-tracker.git
+cd job-tracker
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🎯 Project Goals
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+* Build a realistic frontend application similar to real-world job trackers
+* Demonstrate:
+
+  * Component-driven React architecture
+  * Drag-and-drop UX patterns
+  * Accessible modal and form design
+  * State management without a backend
+  * Clean, maintainable TypeScript code
+  * Focus on **usability and clarity over feature bloat**
+
+---
+
+## 🔮 Future Improvements
+
+* Backend persistence
+* User authentication
+
+---
+
+## 📸 Screenshots
+
+TODO:
+
+---
+
+## 👤 Author
+
+**Ethan**
+Frontend Developer
+Portfolio Project – 2026
+
+Just say the word 👌
