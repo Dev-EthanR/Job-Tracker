@@ -135,7 +135,18 @@ npm run dev
 
 ## 📸 Screenshots
 
-TODO:
+
+| Desktop View | Analytics |
+|--------------|-----------|
+| ![](./screenshots/desktop.png) | ![](./screenshots/analytics.png) |
+
+| Application Details | Add Modal |
+|---------------------|------------------|
+| ![](./screenshots/application-details.png) | ![](./screenshots/modal.png) |
+
+| Drag  | Mobile View |
+|-------------|-------------|
+| ![](./screenshots/drag.png) | ![](./screenshots/mobile.png) |
 
 ---
 
