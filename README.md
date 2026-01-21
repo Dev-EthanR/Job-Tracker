@@ -156,5 +156,3 @@ npm run dev
 **Ethan**
 Frontend Developer
 Portfolio Project – 2026
-
-Just say the word 👌
