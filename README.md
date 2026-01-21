@@ -51,8 +51,6 @@ Built as a **frontend-focused portfolio project** to demonstrate real-world UI a
 
 ## ♿ Accessibility
 
-Accessibility was a core focus throughout the project:
-
 * Semantic HTML
 * Full keyboard navigation
 * Focus trapping for modals
