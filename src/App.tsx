@@ -24,13 +24,30 @@ interface ThemeType {
   setTheme: Dispatch<SetStateAction<string>>;
 }
 
+interface Toast {
+  open: boolean | null;
+  message: string | null;
+  color: "bg-green-600" | "bg-red-600" | null;
+}
+
+interface ToastType {
+  toastOpen: Toast;
+  setToastOpen: Dispatch<SetStateAction<Toast>>;
+}
+
 export const DataCtx = createContext<DataType | null>(null);
 export const ThemeCtx = createContext<ThemeType | null>(null);
+export const ToastCtx = createContext<ToastType | null>(null);
 
 function App() {
   const [data, setData] = useState<Data[]>(() => {
     const storedData: string | null = localStorage.getItem("jobData");
     return storedData ? JSON.parse(storedData) : [];
+  });
+  const [toastOpen, setToastOpen] = useState<Toast>({
+    open: false,
+    message: null,
+    color: null,
   });
 
   const [theme, setTheme] = useState<string>(
@@ -51,16 +68,17 @@ function App() {
     <ThemeCtx.Provider value={{ theme, setTheme }}>
       <BrowserRouter>
         <DataCtx.Provider value={{ data, setData }}>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Applications />} />
-              <Route path="settings" element={<Settings />} />
-              <Route path="analytics" element={<Analytics />} />
-              <Route path="card/:id" element={<CardDetails />} />
-
-              <Route path="*" element={<Page404 />} />
-            </Route>
-          </Routes>
+          <ToastCtx.Provider value={{ toastOpen, setToastOpen }}>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Applications />} />
+                <Route path="settings" element={<Settings />} />
+                <Route path="analytics" element={<Analytics />} />
+                <Route path="card/:id" element={<CardDetails />} />
+                <Route path="*" element={<Page404 />} />
+              </Route>
+            </Routes>
+          </ToastCtx.Provider>
         </DataCtx.Provider>
       </BrowserRouter>
     </ThemeCtx.Provider>

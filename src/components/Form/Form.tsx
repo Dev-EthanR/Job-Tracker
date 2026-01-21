@@ -10,6 +10,7 @@ import LabelOptions from "./LabelOptions";
 import FormButton from "./FormButton";
 import type FormFields from "../../Entities/FormFields";
 import useTheme from "../../hooks/useTheme";
+import useToast from "../../hooks/useToast";
 
 interface Props {
   id: FormType;
@@ -104,3 +105,6 @@ const Form = ({
 };
 
 export default Form;
+function setToastOpen(arg0: { open: boolean; message: null; color: null }) {
+  throw new Error("Function not implemented.");
+}

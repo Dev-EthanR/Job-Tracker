@@ -2,14 +2,22 @@ import { useState } from "react";
 import useData from "../../hooks/useData";
 import DeleteModal from "../features/DeleteModal";
 import Container from "./Container";
+import useToast from "../../hooks/useToast";
 
 const ClearData = () => {
   const { setData } = useData();
+  const { setToastOpen } = useToast();
+
   const [confirmationModal, setConfirmationModal] = useState<boolean>(false);
 
   function clearData() {
     localStorage.removeItem("jobData");
     setData([]);
+    setToastOpen({
+      open: true,
+      message: "Successfully Deleted Data",
+      color: "bg-red-600",
+    });
   }
 
   return (

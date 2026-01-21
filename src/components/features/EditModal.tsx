@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import useData from "../../hooks/useData";
+import useToast from "../../hooks/useToast";
 import Form from "../Form/Form";
 
 interface Props {
@@ -9,6 +11,8 @@ interface Props {
 
 const EditModal = ({ cardId, open, setOpen }: Props) => {
   const { data, setData } = useData();
+  const { setToastOpen } = useToast();
+
   const card = data.find((d) => d.id === cardId);
 
   if (!card) return null;
@@ -28,6 +32,11 @@ const EditModal = ({ cardId, open, setOpen }: Props) => {
             item.id === cardId ? { id: cardId, ...formData } : item,
           ),
         );
+        setToastOpen({
+          open: true,
+          message: "Successfully Updated Application",
+          color: "bg-green-600",
+        });
       }}
     />
   );

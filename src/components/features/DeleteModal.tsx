@@ -1,6 +1,7 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import ModalContainer from "./ModalContainer";
 import useTheme from "../../hooks/useTheme";
+import useToast from "../../hooks/useToast";
 
 interface Props {
   deleteAction: () => void;
@@ -17,6 +18,7 @@ const DeleteModal = ({
   children,
 }: Props) => {
   const { theme } = useTheme();
+  const { setToastOpen } = useToast();
 
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   useEffect(() => {
@@ -32,6 +34,11 @@ const DeleteModal = ({
 
   function onDelete() {
     if (deleteAction) deleteAction();
+    setToastOpen({
+      open: true,
+      message: "Successfully Deleted Application",
+      color: "bg-red-600",
+    });
     exitModal();
   }
 

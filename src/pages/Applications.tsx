@@ -6,9 +6,11 @@ import NotFound from "../components/features/NotFound";
 import type ColumnDetails from "../Entities/ColumnDetails";
 import useData from "../hooks/useData";
 import useTheme from "../hooks/useTheme";
+import Toast from "../components/features/Toast";
 
 const Applications = () => {
   const [selectedValue, setSelectedValue] = useState<string>("all");
+
   const { data, setData } = useData();
   const { theme } = useTheme();
 
@@ -21,7 +23,6 @@ const Applications = () => {
 
   function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;
-
     if (!over) return;
 
     const cardId = active.id as string;
@@ -59,6 +60,7 @@ const Applications = () => {
             </div>
           </DndContext>
         )}
+        <Toast />
       </section>
     </main>
   );
