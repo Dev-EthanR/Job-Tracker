@@ -1,5 +1,5 @@
 import { FocusTrap } from "focus-trap-react";
-import useEscapeKey from "../../hooks/useEscapeKey";
+import useEscapeKey from "../../hooks/useKey";
 import usePreventScroll from "../../hooks/usePreventScroll";
 import { useEffect, type ReactNode } from "react";
 import useToast from "../../hooks/useToast";
@@ -12,7 +12,7 @@ interface Props {
 const ModalContainer = ({ open, onClose, children }: Props) => {
   const { setToastOpen } = useToast();
   usePreventScroll(open);
-  useEscapeKey(onClose);
+  useEscapeKey("Escape", onClose);
 
   useEffect(() => {
     if (!open) return;
