@@ -6,7 +6,8 @@ const Layout = () => {
 
   function getPathName(): string {
     if (location.pathname.endsWith("/")) return "My Applications";
-    if (location.pathname.startsWith("/card/")) return "Card Details";
+    if (location.pathname.startsWith("/application/"))
+      return "Application Details";
     return (
       location.pathname.slice(1).charAt(0).toUpperCase() +
       location.pathname.slice(2)
