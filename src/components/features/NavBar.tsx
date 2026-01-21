@@ -1,9 +1,10 @@
 import { NavLink } from "react-router-dom";
 import menuClose from "../../assets/icons/menu-close.svg";
 import menuOpen from "../../assets/icons/menu-open.svg";
-import { useState, type JSX } from "react";
+import { useRef, useState, type JSX } from "react";
 import useTheme from "../../hooks/useTheme";
 import usePreventScroll from "../../hooks/usePreventScroll";
+import useAnimateHeight from "../../hooks/useAnimateHeight";
 
 interface Props {
   title: string;
@@ -11,6 +12,8 @@ interface Props {
 
 const NavBar = ({ title }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
+  const { height, contentRef } = useAnimateHeight(open);
+
   const { theme } = useTheme();
 
   usePreventScroll(open);
@@ -55,7 +58,15 @@ const NavBar = ({ title }: Props) => {
             />
           </button>
         </div>
-        {open && <div className="text-center">{navigations()}</div>}
+        <div
+          ref={(node) => {
+            contentRef.current = node;
+          }}
+          style={{ height }}
+          className="text-center overflow-hidden transition-[height] duration-300 ease-in-out"
+        >
+          {navigations()}
+        </div>
       </header>
       <div
         className={`${theme === "dark" ? "bg-dark-secondary text-dark-text" : "bg-secondary"}  w-40 h-screen sticky top-0 p-2 z-10 hidden md:block`}

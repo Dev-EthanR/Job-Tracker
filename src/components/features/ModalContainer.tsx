@@ -23,9 +23,8 @@ const ModalContainer = ({ open, onClose, children }: Props) => {
   return (
     <>
       <FocusTrap active>{children}</FocusTrap>
-      <div className="absolute inset-0 z-10 bg-black/40" onClick={onClose} />
+      <div className="absolute inset-0 z-110 bg-black/40" onClick={onClose} />
     </>
   );
 };
-
 export default ModalContainer;

@@ -47,7 +47,7 @@ const DeleteModal = ({
   return (
     <ModalContainer open={open} onClose={() => exitModal()}>
       <div
-        className={`${theme === "dark" ? "bg-dark-primary text-dark-text" : "bg-primary text-text"} absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 flex flex-col  p-5 rounded-lg shadow-2xl w-80 md:w-90`}
+        className={`${theme === "dark" ? "bg-dark-primary text-dark-text" : "bg-primary text-text"} absolute left-1/2 top-1/2 z-200 -translate-x-1/2 -translate-y-1/2 flex flex-col  p-5 rounded-lg shadow-2xl w-80 md:w-90`}
       >
         <h2 className="text-lg md:text-2xl font-semibold mb-1.5">{heading}</h2>
         <p
