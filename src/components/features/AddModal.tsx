@@ -1,20 +1,13 @@
 import { v4 as uuidv4 } from "uuid";
 import useAddModal from "../../hooks/useAddModal";
 import useData from "../../hooks/useData";
-import Form from "../Form/Form";
 import useToast from "../../hooks/useToast";
-import { useEffect } from "react";
+import Form from "../Form/Form";
 
 const AddModal = () => {
   const { modalOpen, setModalOpen } = useAddModal();
   const { setData } = useData();
   const { setToastOpen } = useToast();
-
-  useEffect(() => {
-    if (!modalOpen) return;
-    setToastOpen({ open: false, message: null, color: null });
-  }, [modalOpen]);
-  if (!modalOpen) return null;
 
   const defaultLabel = localStorage.getItem("defaultLabel");
   return (

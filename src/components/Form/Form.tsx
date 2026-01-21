@@ -1,16 +1,15 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { schema, type FormDataShape } from "../../utilities/schema";
 import { useEffect } from "react";
-import ModalContainer from "../features/ModalContainer";
-import FormHeader from "./FormHeader";
-import Input from "./Input";
-import type { FormType } from "./Input";
-import LabelOptions from "./LabelOptions";
-import FormButton from "./FormButton";
+import { useForm } from "react-hook-form";
 import type FormFields from "../../Entities/FormFields";
 import useTheme from "../../hooks/useTheme";
-import useToast from "../../hooks/useToast";
+import { schema, type FormDataShape } from "../../utilities/schema";
+import ModalContainer from "../features/ModalContainer";
+import FormButton from "./FormButton";
+import FormHeader from "./FormHeader";
+import type { FormType } from "./Input";
+import Input from "./Input";
+import LabelOptions from "./LabelOptions";
 
 interface Props {
   id: FormType;
@@ -105,6 +104,3 @@ const Form = ({
 };
 
 export default Form;
-function setToastOpen(arg0: { open: boolean; message: null; color: null }) {
-  throw new Error("Function not implemented.");
-}
