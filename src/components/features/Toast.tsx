@@ -30,7 +30,7 @@ const Toast = () => {
         aria-label="Close notification"
         className="cursor-pointer"
       >
-        <img className="w-5 invert" src={close} alt="" />
+        <img className="w-5 invert hover:invert-85" src={close} alt="" />
       </button>
     </div>
   );

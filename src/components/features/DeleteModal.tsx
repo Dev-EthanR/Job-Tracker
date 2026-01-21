@@ -58,14 +58,14 @@ const DeleteModal = ({
 
         <div className="flex justify-between gap-6">
           <button
-            className={` ${theme === "dark" ? "border-gray-950" : "border-gray-300"} border w-30 rounded-lg p-1 cursor-pointer`}
+            className={` ${theme === "dark" ? "border-gray-950" : "border-gray-300"} hover:border-gray-600 transition-colors duration-200 border w-30 rounded-lg p-1 cursor-pointer`}
             onClick={exitModal}
           >
             Cancel
           </button>
           <button
             ref={buttonRef}
-            className={`bg-red-600 text-white border-gray-300 ${theme === "dark" ? "border-gray-950" : "border-gray-300"} w-30 rounded-lg border p-1  cursor-pointer`}
+            className={`bg-red-600 hover:bg-red-700 text-white transition-colors duration-200   ${theme === "dark" ? "border-gray-950 " : "border-gray-300"} w-30 rounded-lg border p-1  cursor-pointer`}
             onClick={onDelete}
           >
             Delete

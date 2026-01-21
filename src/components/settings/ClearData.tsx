@@ -23,7 +23,7 @@ const ClearData = () => {
   return (
     <Container title="Clear Data">
       <button
-        className="border bg-[#da594d] text-white px-4 py-0.5 cursor-pointer rounded-md"
+        className="border bg-[#da594d] hover:bg-[#df7b72] text-white px-4 py-0.5 cursor-pointer rounded-md"
         onClick={() => setConfirmationModal(true)}
       >
         Clear

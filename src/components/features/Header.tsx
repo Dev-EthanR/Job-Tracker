@@ -51,7 +51,7 @@ const Header = ({ value, setValue }: Props) => {
           </div>
         </div>
         <button
-          className="fixed bottom-5 left-1/2 -translate-x-1/2 z-10 rounded-full  md:static  md:translate-x-0 md:rounded-lg flex items-center justify-center w-60 py-3 text-xl font-medium bg-accent text-white hover:brightness-115 cursor-pointer select-none"
+          className="fixed bottom-5 left-1/2 -translate-x-1/2 z-10 rounded-full  md:static  md:translate-x-0 md:rounded-lg flex items-center justify-center w-60 py-3 text-xl font-medium bg-accent text-white hover:bg-hover transition-colors duration-200 cursor-pointer select-none"
           onClick={() => setModalOpen(true)}
         >
           <img className="w-8 filter brightness-0 invert" src={plus} alt="" />

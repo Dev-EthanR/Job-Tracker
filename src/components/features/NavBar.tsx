@@ -18,11 +18,25 @@ const NavBar = ({ title }: Props) => {
   const navigations = (): JSX.Element => {
     return (
       <nav className={`flex gap-5 flex-col mt-18 h-screen `}>
-        <NavLink to="." end>
+        <NavLink
+          to="."
+          end
+          className={`${theme === "dark" ? "hover:text-dark-hover" : "hover:text-hover"}`}
+        >
           My Applications
         </NavLink>
-        <NavLink to="analytics">Analytics</NavLink>
-        <NavLink to="settings">Settings</NavLink>
+        <NavLink
+          to="analytics"
+          className={`${theme === "dark" ? "hover:text-dark-hover" : "hover:text-hover"}`}
+        >
+          Analytics
+        </NavLink>
+        <NavLink
+          to="settings"
+          className={`${theme === "dark" ? "hover:text-dark-hover" : "hover:text-hover"}`}
+        >
+          Settings
+        </NavLink>
       </nav>
     );
   };

@@ -19,7 +19,7 @@ const FormHeader = ({ title, onClose }: Props) => {
         type="button"
       >
         <img
-          className={`w-5 ${theme === "dark" && "invert"}`}
+          className={`w-5 ${theme === "dark" ? "invert  hover:invert-80" : "hover:invert-30"} transition-colors duration-200`}
           src={close}
           alt=""
         />

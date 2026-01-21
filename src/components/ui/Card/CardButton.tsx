@@ -37,7 +37,7 @@ const CardButton = ({ setEditModal, setDeleteModal, deleteAction }: Props) => {
         onClick={() => setOpionsOpened((prev) => !prev)}
       >
         <img
-          className={`w-7 hover:-translate-x-0.5 transition-transform duration-300 cursor-pointer ease-out select-none ${theme === "dark" && "invert"}`}
+          className={`w-7 transition-colors duration-300 cursor-pointer ease-out select-none ${theme === "dark" ? "invert hover:invert-80" : "hover:invert-30"}`}
           src={moreOptionsImg}
           alt=""
         />
