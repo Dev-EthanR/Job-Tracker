@@ -28,7 +28,7 @@ const Columns = ({ column, data }: Props) => {
       >
         <h2 className="ml-auto pl-5 text-white">{column.title}</h2>
         <img
-          className={`max-w-10 ml-auto transition-transform duration-300 ${toggleItems ? "rotate-0" : "rotate-90"}`}
+          className={`max-w-10 ml-auto transition-transform duration-300 ${toggleItems ? "rotate-0" : "rotate-90"} invert`}
           src={icon}
           alt=""
         />

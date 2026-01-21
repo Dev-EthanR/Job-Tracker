@@ -3,6 +3,7 @@ import menuClose from "../../assets/icons/menu-close.svg";
 import menuOpen from "../../assets/icons/menu-open.svg";
 import { useState, type JSX } from "react";
 import useTheme from "../../hooks/useTheme";
+import usePreventScroll from "../../hooks/usePreventScroll";
 
 interface Props {
   title: string;
@@ -12,9 +13,11 @@ const NavBar = ({ title }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
   const { theme } = useTheme();
 
+  usePreventScroll(open);
+
   const navigations = (): JSX.Element => {
     return (
-      <nav className={`flex gap-2 flex-col`}>
+      <nav className={`flex gap-5 flex-col mt-18 h-screen `}>
         <NavLink to="." end>
           My Applications
         </NavLink>
@@ -27,7 +30,7 @@ const NavBar = ({ title }: Props) => {
   return (
     <>
       <header
-        className={`${theme === "dark" ? "bg-dark-secondary text-dark-text" : "bg-secondary"} w-full md:hidden`}
+        className={`${theme === "dark" ? "bg-dark-secondary text-dark-text" : "bg-secondary"} w-full md:hidden  z-100`}
       >
         <div className="flex justify-between p-2 items-center ">
           <h1 className="text-2xl font-bold">{title}</h1>
