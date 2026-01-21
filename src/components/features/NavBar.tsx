@@ -33,7 +33,7 @@ const NavBar = ({ title }: Props) => {
           <h1 className="text-2xl font-bold">{title}</h1>
           <button onClick={() => setOpen((prev) => !prev)}>
             <img
-              className={`w-12 ${theme === "dark" && "invert"}`}
+              className={`w-12 ${theme === "dark" && "invert"} select-none`}
               src={open ? menuClose : menuOpen}
             />
           </button>

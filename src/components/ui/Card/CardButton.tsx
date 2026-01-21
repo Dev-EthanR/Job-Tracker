@@ -51,7 +51,7 @@ const CardButton = ({ setEditModal, setDeleteModal, deleteAction }: Props) => {
             onClick={() => modalOption(setEditModal)}
           >
             <img
-              className={`w-5 ${theme === "dark" && "invert"}`}
+              className={`w-5 ${theme === "dark" && "invert"} select-none`}
               src={editImg}
               alt=""
             />
@@ -62,7 +62,7 @@ const CardButton = ({ setEditModal, setDeleteModal, deleteAction }: Props) => {
             onClick={handleDelete}
           >
             <img
-              className={`w-5 ${theme === "dark" && "invert"}`}
+              className={`w-5 ${theme === "dark" && "invert"} select-none`}
               src={deleteImg}
               alt=""
             />
