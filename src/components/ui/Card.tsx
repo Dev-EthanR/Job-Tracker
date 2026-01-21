@@ -31,7 +31,7 @@ const Card = ({ cardData, color }: Props) => {
   return (
     <>
       <div
-        className={`relative ${theme === "dark" ? "bg-dark-primary shadow-gray-950" : "bg-primary shadow-gray-300"} rounded-lg shadow-md  py-4 px-3 h-fit mx-auto w-70  md:w-50 max-w-80 xl:w-full xl:max-w-110 ${transform ? "cursor-grabbing" : "cursor-grab"}`}
+        className={`relative ${theme === "dark" ? "bg-dark-primary shadow-gray-950" : "bg-primary shadow-gray-300"} rounded-lg shadow-md  py-4 px-3 h-fit mx-auto w-70 md:w-50 max-w-80 xl:w-full xl:max-w-110 ${transform ? "cursor-grabbing" : "cursor-grab"}`}
         ref={setNodeRef}
         {...listeners}
         {...attributes}

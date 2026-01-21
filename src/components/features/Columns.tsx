@@ -43,7 +43,7 @@ const Columns = ({ column, data }: Props) => {
           contentRef.current = node;
         }}
         style={{ height }}
-        className="overflow-hidden transition-[height] duration-300 ease-in-out flex flex-col gap-4"
+        className={`${height === 0 && "overflow-hidden"} transition-[height] duration-300 ease-in-out flex flex-col gap-4`}
       >
         {filteredData.length === 0 ? (
           <NotFound
