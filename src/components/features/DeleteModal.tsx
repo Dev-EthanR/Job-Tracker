@@ -21,6 +21,7 @@ const DeleteModal = ({
   const { setToastOpen } = useToast();
 
   const buttonRef = useRef<HTMLButtonElement | null>(null);
+
   useEffect(() => {
     if (buttonRef.current) {
       buttonRef.current.focus();
@@ -32,7 +33,8 @@ const DeleteModal = ({
     setOpen(false);
   }
 
-  function onDelete() {
+  // handle delete action
+  function onDelete(): void {
     if (deleteAction) deleteAction();
     setToastOpen({
       open: true,

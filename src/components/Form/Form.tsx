@@ -41,13 +41,14 @@ const Form = ({
     resolver: zodResolver(schema),
     defaultValues,
   });
+
   const { theme } = useTheme();
 
   useEffect(() => {
     reset(defaultValues);
   }, [defaultValues, reset]);
 
-  function exit() {
+  function exit(): void {
     clearErrors();
     reset();
     onClose();

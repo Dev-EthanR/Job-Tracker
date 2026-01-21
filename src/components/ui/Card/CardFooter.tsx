@@ -7,7 +7,7 @@ interface Props {
 }
 
 const CardFooter = ({ color, label, date }: Props) => {
-  const formattedDate = new Date(`${date}`).toDateString().substring(4);
+  const formattedDate: string = new Date(`${date}`).toDateString().substring(4);
   const { theme } = useTheme();
 
   return (

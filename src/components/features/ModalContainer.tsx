@@ -10,9 +10,9 @@ interface Props {
   children: ReactNode;
 }
 const ModalContainer = ({ open, onClose, children }: Props) => {
+  const { setToastOpen } = useToast();
   usePreventScroll(open);
   useEscapeKey(onClose);
-  const { setToastOpen } = useToast();
 
   useEffect(() => {
     if (!open) return;

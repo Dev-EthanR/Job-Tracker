@@ -5,6 +5,7 @@ import useTheme from "../hooks/useTheme";
 const CardDetails = () => {
   const location = useLocation();
   const { theme } = useTheme();
+
   return (
     <main
       className={`w-full ${theme === "dark" ? "bg-dark-primary text-dark-text" : "bg-white"}  overflow-hidden p-8`}

@@ -1,3 +1,4 @@
+import type Data from "../../Entities/Data";
 import useData from "../../hooks/useData";
 import useToast from "../../hooks/useToast";
 import Form from "../Form/Form";
@@ -12,7 +13,7 @@ const EditModal = ({ cardId, open, setOpen }: Props) => {
   const { data, setData } = useData();
   const { setToastOpen } = useToast();
 
-  const card = data.find((d) => d.id === cardId);
+  const card: Data | undefined = data.find((d) => d.id === cardId);
 
   if (!card) return null;
 

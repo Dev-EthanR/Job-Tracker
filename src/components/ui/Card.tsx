@@ -23,6 +23,7 @@ const Card = ({ cardData, color }: Props) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: cardData.id,
   });
+
   const style = transform
     ? { transform: `translate(${transform.x}px, ${transform.y}px)` }
     : undefined;

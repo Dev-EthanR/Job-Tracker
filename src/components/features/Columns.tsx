@@ -14,8 +14,11 @@ interface Props {
 const Columns = ({ column, data }: Props) => {
   const [toggleItems, setToggleItems] = useState<boolean>(true);
 
-  const filteredData = data.filter((item) => item.label === column.title);
+  const filteredData: Data[] = data.filter(
+    (item) => item.label === column.title,
+  );
   const { setNodeRef } = useDroppable({ id: column.title });
+
   return (
     <article className="flex flex-col gap-4 max-w-80 xl:max-w-120 w-full">
       <button

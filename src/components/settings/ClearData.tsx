@@ -10,7 +10,7 @@ const ClearData = () => {
 
   const [confirmationModal, setConfirmationModal] = useState<boolean>(false);
 
-  function clearData() {
+  function clearData(): void {
     localStorage.removeItem("jobData");
     setData([]);
     setToastOpen({

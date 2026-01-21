@@ -8,6 +8,7 @@ interface Props {
 
 const FormHeader = ({ title, onClose }: Props) => {
   const { theme } = useTheme();
+
   return (
     <div className="flex justify-between border-b border-gray-300 pb-2 mb-2">
       <h2 className="text-2xl font-semibold">{title}</h2>

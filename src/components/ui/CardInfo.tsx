@@ -7,12 +7,15 @@ interface Props {
 
 const CardInfo = ({ data }: Props) => {
   const { theme } = useTheme();
-  const formattedDate = new Date(`${data.date}`).toLocaleString("en-US", {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
+  const formattedDate: string = new Date(`${data.date}`).toLocaleString(
+    "en-US",
+    {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    },
+  );
 
   return (
     <div

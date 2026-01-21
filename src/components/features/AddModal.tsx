@@ -9,7 +9,8 @@ const AddModal = () => {
   const { setData } = useData();
   const { setToastOpen } = useToast();
 
-  const defaultLabel = localStorage.getItem("defaultLabel");
+  const defaultLabel: string | null = localStorage.getItem("defaultLabel");
+
   return (
     <Form
       id="add"

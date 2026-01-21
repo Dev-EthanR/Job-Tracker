@@ -19,7 +19,7 @@ const CardButton = ({ setEditModal, setDeleteModal, deleteAction }: Props) => {
     setModal(true);
   }
 
-  function handleDelete() {
+  function handleDelete(): void {
     const deleteConfirmation = localStorage.getItem("deleteConfirmation");
     const confirmDelete = deleteConfirmation && JSON.parse(deleteConfirmation);
 
@@ -29,6 +29,7 @@ const CardButton = ({ setEditModal, setDeleteModal, deleteAction }: Props) => {
       if (deleteAction) deleteAction();
     }
   }
+
   return (
     <>
       <button

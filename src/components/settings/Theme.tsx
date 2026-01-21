@@ -4,7 +4,7 @@ import Container from "./Container";
 const Theme = () => {
   const { theme, setTheme } = useTheme();
 
-  function switchTheme() {
+  function switchTheme(): void {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   }
 

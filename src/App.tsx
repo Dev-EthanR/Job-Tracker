@@ -74,7 +74,7 @@ function App() {
                 <Route index element={<Applications />} />
                 <Route path="settings" element={<Settings />} />
                 <Route path="analytics" element={<Analytics />} />
-                <Route path="card/:id" element={<CardDetails />} />
+                <Route path="application/:id" element={<CardDetails />} />
                 <Route path="*" element={<Page404 />} />
               </Route>
             </Routes>

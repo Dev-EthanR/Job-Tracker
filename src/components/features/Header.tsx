@@ -22,6 +22,7 @@ const Header = ({ value, setValue }: Props) => {
   const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>): void => {
     setValue(event.target.value);
   };
+
   return (
     <AddModalCtx.Provider value={{ modalOpen, setModalOpen }}>
       <header

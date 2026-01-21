@@ -11,7 +11,7 @@ const CardHeader = ({ cardData }: Props) => {
 
   return (
     <div className="flex gap-1 flex-col md:flex-row md:items-center md:gap-x-5 flex-wrap">
-      <Link to={`card/${cardData.id}`} state={{ cardData }}>
+      <Link to={`application/${cardData.id}`} state={{ cardData }}>
         <h3
           className={`tracking-tight  ${theme === "dark" ? "text-blue-400" : "text-accent"} text-xl font-bold md:text-3xl hover:cursor-pointer`}
           onPointerDown={(e) => e.stopPropagation()}

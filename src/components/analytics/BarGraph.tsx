@@ -21,6 +21,17 @@ ChartJS.register(
   Legend,
 );
 
+interface DataSets {
+  label: string;
+  data: number[];
+  backgroundColor: string[];
+}
+
+interface GraphType {
+  labels: string[];
+  datasets: DataSets[];
+}
+
 const BarGraph = () => {
   const { data } = useData();
   const { theme } = useTheme();
@@ -28,13 +39,17 @@ const BarGraph = () => {
   function dataLength(label: string): number {
     return data.filter((d) => d.label === label).length;
   }
+
   const labels = ["Applied", "Interview", "Offer", "Rejected"];
-  const newData = [
+
+  // get Lengths for each label
+  const newData: number[] = [
     dataLength("Applied"),
     dataLength("Interview"),
     dataLength("Offer"),
     dataLength("Rejected"),
   ];
+
   const options: ChartOptions<"bar"> = {
     responsive: true,
     plugins: {
@@ -90,7 +105,8 @@ const BarGraph = () => {
       },
     },
   };
-  const graphData = {
+
+  const graphData: GraphType = {
     labels,
     datasets: [
       {
@@ -105,6 +121,7 @@ const BarGraph = () => {
       },
     ],
   };
+
   return (
     <Bar
       className={`max-w-375 flex max-h-150 ${theme === "dark" ? "bg-dark-primary shadow-gray-950" : "bg-primary shadow-gray-300"} rounded-lg shadow-md  p-5`}

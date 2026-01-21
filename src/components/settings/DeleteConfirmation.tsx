@@ -11,9 +11,11 @@ const DeleteConfirmation = () => {
   const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
     setIsChecked(event.target.checked);
   };
+
   useEffect(() => {
     localStorage.setItem("deleteConfirmation", JSON.stringify(isChecked));
   }, [isChecked]);
+
   return (
     <Container>
       <div className="flex items-center  mr-auto gap-3">
