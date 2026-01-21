@@ -20,7 +20,7 @@ const NavBar = ({ title }: Props) => {
 
   const navigations = (): JSX.Element => {
     return (
-      <nav className={`flex gap-5 flex-col mt-18 h-screen `}>
+      <nav className={`flex gap-5 flex-col mt-18 h-screen `} id="nav">
         <NavLink
           to="."
           end
@@ -51,7 +51,11 @@ const NavBar = ({ title }: Props) => {
       >
         <div className="flex justify-between p-2 items-center ">
           <h1 className="text-2xl font-bold">{title}</h1>
-          <button onClick={() => setOpen((prev) => !prev)}>
+          <button
+            onClick={() => setOpen((prev) => !prev)}
+            aria-controls="nav"
+            aria-expanded={open}
+          >
             <img
               className={`w-12 ${theme === "dark" && "invert"} select-none`}
               src={open ? menuClose : menuOpen}

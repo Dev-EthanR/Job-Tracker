@@ -64,6 +64,9 @@ const Form = ({
       <form
         onSubmit={handleSubmit(onSubmit)}
         className={`absolute left-1/2 top-1/2 z-200 -translate-x-1/2 -translate-y-1/2 flex flex-col  p-5 rounded-lg shadow-2xl w-80 md:w-140 ${theme === "dark" ? "bg-dark-primary" : "bg-primary"}`}
+        role="dialog"
+        aria-expanded={open}
+        aria-labelledby="Input form for card"
       >
         <FormHeader title={title} onClose={exit} />
         {fields.map((input) => (
