@@ -20,7 +20,7 @@ const NavBar = ({ title }: Props) => {
 
   const navigations = (): JSX.Element => {
     return (
-      <nav className={`flex gap-5 flex-col mt-18 h-screen `} id="nav">
+      <nav className={`flex gap-5 flex-col pt-18 h-screen `} id="nav">
         <NavLink
           to="."
           end
