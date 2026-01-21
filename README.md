@@ -73,50 +73,31 @@ Built mobile-first and scaled up.
 
 ---
 
-## 🛠️ Tech Stack
+### 🛠 Tech Stack
 
-### Core
+**Frontend**
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-4-06B6D4?logo=tailwindcss&logoColor=white)
 
-* **React 19**
-* **TypeScript**
-* **Vite**
+**State & Forms**
+![React Hook Form](https://img.shields.io/badge/React_Hook_Form-7-EC5990?logo=reacthookform&logoColor=white)
+![Zod](https://img.shields.io/badge/Zod-4-3E67B1?logo=zod&logoColor=white)
 
-### Styling
+**Drag & Drop**
+![dnd-kit](https://img.shields.io/badge/dnd--kit-Accessible-blue)
 
-* **Tailwind CSS**
+**Charts & Analytics**
+![Chart.js](https://img.shields.io/badge/Chart.js-4-FF6384?logo=chartdotjs&logoColor=white)
 
-### Drag & Drop
+**Routing & Accessibility**
+![React Router](https://img.shields.io/badge/React_Router-7-CA4245?logo=reactrouter&logoColor=white)
+![Focus Trap](https://img.shields.io/badge/Focus--Trap-Accessibility-green)
 
-* **@dnd-kit/core**
-
-### Forms & Validation
-
-* **react-hook-form**
-* **zod**
-* **@hookform/resolvers**
-
-### Charts & Analytics
-
-* **chart.js**
-* **react-chartjs-2**
-
-### Accessibility
-
-* **focus-trap-react**
-
-### Routing
-
-* **react-router-dom**
-
-### Utilities
-
-* **uuid**
-
-### Tooling
-
-* **ESLint**
-* **TypeScript ESLint**
-* **Vite Preview**
+**Tooling**
+![ESLint](https://img.shields.io/badge/ESLint-9-4B32C3?logo=eslint&logoColor=white)
+![UUID](https://img.shields.io/badge/UUID-Unique_IDs-lightgrey)
 
 ---
 
